@@ -1,6 +1,18 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 
+// Import images directly for production build
+import ecommerceImage from '@/assets/images/ecommerce.png'
+import trackerImage from '@/assets/images/tracker.png'
+import taskImage from '@/assets/images/task.png'
+import farmerImage from '@/assets/images/farmer.png'
+
+// Fallback paths for local development
+const getImagePath = (importedImage, fallbackPath) => {
+  // Use imported image for production, fallback path for development
+  return importedImage || fallbackPath
+}
+
 export const useThemeStore = defineStore('theme', () => {
   const isDarkMode = ref(localStorage.getItem('theme') === 'dark')
   
@@ -27,7 +39,7 @@ export const usePortfolioStore = defineStore('portfolio', () => {
       id: 1,
       title: 'E-Commerce Platform',
       description: 'A full-featured online store with payment integration and inventory management.',
-      image: '/src/assets/images/ecommerce.png',
+      image: getImagePath(ecommerceImage, '/src/assets/images/ecommerce.png'),
       technologies: ['React', 'Node.js', 'MongoDB'],
       category: 'web',
       demoUrl: '#',
@@ -38,7 +50,7 @@ export const usePortfolioStore = defineStore('portfolio', () => {
       id: 2,
       title: 'Fitness Tracker App',
       description: 'Mobile application for tracking workouts, nutrition, and health metrics.',
-      image: '/src/assets/images/tracker.png',
+      image: getImagePath(trackerImage, '/src/assets/images/tracker.png'),
       technologies: ['React Native', 'Firebase', 'Redux'],
       category: 'mobile',
       demoUrl: '#',
@@ -49,7 +61,7 @@ export const usePortfolioStore = defineStore('portfolio', () => {
       id: 3,
       title: 'Task Management System',
       description: 'Collaborative tool for teams to manage projects and tasks efficiently.',
-      image: '/src/assets/images/task.png',
+      image: getImagePath(taskImage, '/src/assets/images/task.png'),
       technologies: ['Vue.js', 'Express', 'PostgreSQL'],
       category: 'web',
       demoUrl: '#',
@@ -60,7 +72,7 @@ export const usePortfolioStore = defineStore('portfolio', () => {
       id: 4,
       title: 'Sustainable Farm Marketplace',
       description: 'E-commerce platform connecting sustainable farmers with consumers for direct product sales.',
-      image: '/src/assets/images/farmer.png',
+      image: getImagePath(farmerImage, '/src/assets/images/farmer.png'),
       technologies: ['Vue.js', 'Laravel', 'MySQL', 'Tailwind CSS'],
       category: 'web',
       demoUrl: '#',
