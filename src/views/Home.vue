@@ -24,7 +24,7 @@
           <!-- Text Content -->
           <div class="w-full lg:w-1/2 text-center lg:text-left">
             <transition appear name="slide-up">
-              <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 leading-tight">
+              <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-3 sm:mb-4 md:mb-6 leading-tight">
                 Hi, I'm
                 <span class="name-highlight">
                   Atanas Patrick
@@ -33,13 +33,13 @@
             </transition>
             
             <transition appear name="slide-up" :delay="200">
-              <h2 class="text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold mb-4 sm:mb-6 text-cyan-300">
+              <h2 class="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-semibold mb-3 sm:mb-4 md:mb-6 text-cyan-300">
                 Software Engineer
               </h2>
             </transition>
             
             <transition appear name="slide-up" :delay="400">
-              <p class="text-base sm:text-lg md:text-xl mb-6 sm:mb-8 text-gray-300 max-w-lg mx-auto lg:mx-0">
+              <p class="text-sm sm:text-base md:text-lg lg:text-xl mb-4 sm:mb-6 md:mb-8 text-gray-300 max-w-lg mx-auto lg:mx-0">
                 I build exceptional digital experiences using modern technologies like Django, Laravel, Vue.js, Angular, and Tailwind CSS. 
                 From intuitive user interfaces to robust backend systems, I focus on creating innovative, scalable, and impactful 
                 solutions that solve real-world problems and elevate user satisfaction.
@@ -48,10 +48,10 @@
             
             <!-- Action Buttons -->
             <transition appear name="slide-up" :delay="600">
-              <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start">
+              <div class="flex flex-col sm:flex-row gap-2 sm:gap-3 md:gap-4 justify-center lg:justify-start">
                 <router-link 
                   to="/projects"
-                  class="group relative btn-primary text-sm sm:text-base text-center overflow-hidden"
+                  class="group relative btn-primary text-xs sm:text-sm md:text-base text-center overflow-hidden px-4 sm:px-6 py-2 sm:py-3"
                 >
                   <span class="relative z-10">View My Work</span>
                   <div class="absolute inset-0 bg-gradient-to-r from-primary-400 to-secondary-400 
@@ -60,7 +60,7 @@
                 
                 <router-link 
                   to="/contact"
-                  class="group relative btn-secondary text-sm sm:text-base text-center overflow-hidden"
+                  class="group relative btn-secondary text-xs sm:text-sm md:text-base text-center overflow-hidden px-4 sm:px-6 py-2 sm:py-3"
                 >
                   <span class="relative z-10">Contact Me</span>
                   <div class="absolute inset-0 bg-white opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -78,7 +78,7 @@
                 <img 
                   src="/src/assets/images/profile.jpg" 
                   alt="Atanas Patrick" 
-                  class="relative rounded-full w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 
+                  class="relative rounded-full w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 lg:w-64 lg:h-64 xl:w-80 xl:h-80 
                          object-cover border-4 border-cyan-400/50 shadow-2xl hover:shadow-cyan-500/25 
                          transition-all duration-300"
                 >
