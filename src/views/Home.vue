@@ -97,27 +97,27 @@
       </section>
 
     <!-- About Section -->
-    <section id="about" class="py-16 sm:py-20 bg-gray-900 text-white">
+    <section id="about" class="py-4 sm:py-8 bg-gray-900 text-white">
       <About />
     </section>
     
     <!-- Skills Section -->
-    <section id="skills" class="py-16 sm:py-20 bg-gray-800 text-white">
+    <section id="skills" class="py-4 sm:py-8 bg-gray-800 text-white">
       <Skills />
     </section>
     
     <!-- Experience Section -->
-    <section id="experience" class="py-16 sm:py-20 bg-gray-900 text-white">
+    <section id="experience" class="py-4 sm:py-8 bg-gray-900 text-white">
       <Experience />
     </section>
     
     <!-- Projects Section -->
-    <section id="projects" class="py-16 sm:py-20 bg-gray-800 text-white">
+    <section id="projects" class="py-4 sm:py-8 bg-gray-800 text-white">
       <Projects />
     </section>
     
     <!-- Contact Section -->
-    <section id="contact" class="py-16 sm:py-20 bg-gray-900 text-white">
+    <section id="contact" class="py-4 sm:py-8 bg-gray-900 text-white">
       <Contact />
     </section>
   </div>
