@@ -8,13 +8,17 @@
       </transition>
 
       <div class="space-y-4 sm:space-y-6">
-        <!-- Experience Section -->
+        <!-- Professional Journey -->
         <div>
           <transition appear name="slide-up">
             <h3 class="text-base sm:text-lg md:text-xl font-semibold mb-2 sm:mb-3 md:mb-4 text-center text-white">
-              Professional Experience
+              Professional Journey
             </h3>
           </transition>
+          <p class="text-center text-gray-400 text-sm max-w-3xl mx-auto mb-6">
+            My professional experience spans software development roles where I've contributed to building 
+            scalable applications, leading development teams, and implementing industry best practices.
+          </p>
           
           <div class="max-w-4xl mx-auto space-y-3 sm:space-y-4">
             <div
@@ -86,13 +90,17 @@
           </div>
         </div>
 
-        <!-- Education Section -->
+        <!-- Academic Background -->
         <div>
           <transition appear name="slide-up">
             <h3 class="text-base sm:text-lg md:text-xl font-semibold mb-2 sm:mb-3 md:mb-4 text-center text-white">
-              Education
+              Academic Foundation
             </h3>
           </transition>
+          <p class="text-center text-gray-400 text-sm max-w-3xl mx-auto mb-6">
+            My academic journey in Software Engineering has provided me with strong theoretical foundations 
+            and practical skills that complement my professional experience.
+          </p>
           
           <div class="max-w-4xl mx-auto space-y-3 sm:space-y-4">
             <div

@@ -3,9 +3,14 @@
     <div class="max-w-7xl mx-auto">
       <transition appear name="fade">
         <h2 class="text-3xl sm:text-4xl font-bold text-center mb-12 sm:mb-16 gradient-text">
-          My Projects
+          My Projects 
         </h2>
       </transition>
+      
+      <p class="text-center text-gray-400 text-sm max-w-3xl mx-auto mb-8">
+        Explore my diverse portfolio of projects showcasing practical applications of modern web technologies. 
+        Each project represents unique challenges solved through innovative solutions and best practices.
+      </p>
 
       <!-- Filter Controls -->
       <div class="flex flex-wrap justify-center gap-2 mb-8">
@@ -116,12 +121,12 @@
             <!-- Description with Expand on Hover -->
             <p class="text-gray-400 mb-4 text-sm sm:text-base line-clamp-2 
                        group-hover:line-clamp-none transition-all duration-300 
-                       group-hover:text-gray-300">
+                       group-hover:text-gray-300 max-h-12 sm:max-h-none overflow-hidden">
               {{ project.description }}
             </p>
             
             <!-- Technology Tags -->
-            <div class="flex flex-wrap gap-2 mb-4">
+            <div class="flex flex-wrap gap-2 mb-4 max-h-12 sm:max-h-none overflow-hidden">
               <span 
                 v-for="tech in project.technologies" 
                 :key="tech"

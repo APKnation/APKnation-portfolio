@@ -3,11 +3,12 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-12">
         <h2 class="text-4xl font-extrabold text-white sm:text-5xl leading-tight mb-4">
-          <span class="gradient-text">Contact Me</span>
+          <span class="gradient-text">Get In Touch</span>
         </h2>
         <p class="text-lg text-gray-400 max-w-2xl mx-auto">
-          I'm always open to new opportunities, collaborations, and interesting projects.
-          Feel free to reach out, and I'll get back to you as soon as possible!
+          I'm actively open to discussing new opportunities, collaborations, and exciting projects. 
+          Whether you're looking to hire, partner on a project, or simply connect about technology, 
+          I'm always interested in meaningful conversations that can lead to impactful solutions.
         </p>
       </div>
 
@@ -58,11 +59,11 @@
         </div>
 
         <div class="bg-gray-800 p-8 rounded-lg shadow-xl border border-primary-700/50">
-          <h3 class="text-3xl font-bold text-white mb-8">Let's Connect</h3>
+          <h3 class="text-3xl font-bold text-white mb-8">Communication Channels</h3>
           <p class="text-gray-300 mb-8 leading-relaxed">
-            Whether you have a project in mind, want to discuss potential collaborations, 
-            or just want to say hello, I'd love to hear from you. The best way to reach me 
-            is through the platforms below.
+            I believe in clear and prompt communication. Below are the various ways you can reach me 
+            based on your needs and preferences. Each channel is monitored regularly to ensure 
+            timely responses and meaningful engagement.
           </p>
           
           <div class="space-y-6">

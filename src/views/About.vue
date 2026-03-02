@@ -113,19 +113,19 @@
                   
                   <!-- Summary Section -->
                   <div class="mt-3 sm:mt-6 p-2 sm:p-4 bg-gray-700/30 rounded-lg border border-gray-600/30 
-                              opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200">
+                              opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200 max-h-24 sm:max-h-none overflow-hidden">
                     <h4 class="text-white text-[11px] sm:text-sm font-semibold mb-1 sm:mb-2 flex items-center">
                       <span class="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-cyan-400 rounded-full mr-1 sm:mr-2 animate-pulse"></span>
                       Professional Summary
                     </h4>
-                    <p class="text-gray-300 text-[9px] sm:text-xs leading-relaxed line-clamp-3 sm:line-clamp-none">
+                    <p class="text-gray-300 text-[9px] sm:text-xs leading-relaxed line-clamp-2 sm:line-clamp-none">
                       Passionate software engineer specializing in modern web technologies. 
                       I build scalable applications with clean code and user-centric design.
                     </p>
                   </div>
                   
                   <!-- Core Values -->
-                  <div class="mt-2 sm:mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-300">
+                  <div class="mt-2 sm:mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-300 max-h-16 sm:max-h-none overflow-hidden">
                     <h4 class="text-white text-[11px] sm:text-sm font-semibold mb-2 sm:mb-3">Core Values</h4>
                     <div class="flex flex-wrap gap-1 sm:gap-2">
                       <span class="px-1.5 py-0.5 sm:px-2 sm:py-1 bg-cyan-600/20 text-cyan-300 text-[9px] sm:text-xs rounded-full 
@@ -181,60 +181,59 @@
               <div class="mb-8">
                 <h3 class="text-xl font-semibold text-white mb-4 flex items-center">
                   <div class="w-2 h-2 bg-gray-600 rounded-full mr-3"></div>
-                  Introduction
+                  Personal Background
                 </h3>
                 <div class="space-y-4 text-gray-300 leading-relaxed">
                   <p class="text-base">
-                    I'm Atanas Patrick, a passionate software engineer with 1 year of experience building 
-                    scalable web applications and solving complex problems with elegant code solutions.
+                    I'm Atanas Patrick, a passionate software engineer born and raised in Tanzania. 
+                    My journey into technology began with a curiosity about how digital solutions transform lives, 
+                    leading me to pursue Software Engineering at the University of Dodoma.
                   </p>
                   <p class="text-base">
-                    My approach combines technical expertise with a keen eye for user experience, ensuring that the 
-                    solutions I build are not only functional but also intuitive and enjoyable to use. 
-                    I specialize in modern web technologies and frameworks that deliver exceptional results.
+                    Beyond coding, I'm driven by creativity and problem-solving. I believe in the power of 
+                    technology to bridge gaps and create opportunities. When I'm not developing, you'll find me 
+                    exploring new tech trends, contributing to open-source projects, or mentoring aspiring developers 
+                    in my community.
+                  </p>
+                  <p class="text-base">
+                    My approach to life and work is rooted in continuous learning, collaboration, and the belief that 
+                    great software is built not just with code, but with empathy for the end-users and a commitment 
+                    to making a positive impact through technology.
                   </p>
                 </div>
               </div>
 
-              <!-- Skills & Expertise -->
+              <!-- Personal Values & Philosophy -->
               <div class="mb-8">
                 <h3 class="text-xl font-semibold text-white mb-4 flex items-center">
                   <div class="w-2 h-2 bg-gray-600 rounded-full mr-3"></div>
-                  Expertise
+                  Core Values & Philosophy
                 </h3>
-                <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                  <div class="bg-gray-700/50 rounded-lg p-3 text-center hover:bg-gray-700 
-                               transition-colors duration-300">
-                    <span class="text-gray-300 text-sm">JavaScript</span>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div class="bg-gray-700/30 rounded-lg p-4 border border-gray-600/30">
+                    <div class="text-white text-sm font-semibold mb-2">Purpose-Driven</div>
+                    <p class="text-gray-400 text-xs">Every line of code should serve a meaningful purpose and solve real problems.</p>
                   </div>
-                  <div class="bg-gray-700/50 rounded-lg p-3 text-center hover:bg-gray-700 
-                               transition-colors duration-300">
-                    <span class="text-gray-300 text-sm">Vue.js</span>
+                  <div class="bg-gray-700/30 rounded-lg p-4 border border-gray-600/30">
+                    <div class="text-white text-sm font-semibold mb-2">Community Focus</div>
+                    <p class="text-gray-400 text-xs">Technology should empower communities and create inclusive opportunities.</p>
                   </div>
-                  <div class="bg-gray-700/50 rounded-lg p-3 text-center hover:bg-gray-700 
-                               transition-colors duration-300">
-                    <span class="text-gray-300 text-sm">Laravel</span>
+                  <div class="bg-gray-700/30 rounded-lg p-4 border border-gray-600/30">
+                    <div class="text-white text-sm font-semibold mb-2">Growth Mindset</div>
+                    <p class="text-gray-400 text-xs">Continuous learning and adaptation are key to staying relevant in tech.</p>
                   </div>
-                  <div class="bg-gray-700/50 rounded-lg p-3 text-center hover:bg-gray-700 
-                               transition-colors duration-300">
-                    <span class="text-gray-300 text-sm">React</span>
-                  </div>
-                  <div class="bg-gray-700/50 rounded-lg p-3 text-center hover:bg-gray-700 
-                               transition-colors duration-300">
-                    <span class="text-gray-300 text-sm">Node.js</span>
-                  </div>
-                  <div class="bg-gray-700/50 rounded-lg p-3 text-center hover:bg-gray-700 
-                               transition-colors duration-300">
-                    <span class="text-gray-300 text-sm">Tailwind CSS</span>
+                  <div class="bg-gray-700/30 rounded-lg p-4 border border-gray-600/30">
+                    <div class="text-white text-sm font-semibold mb-2">Innovation</div>
+                    <p class="text-gray-400 text-xs">Pushing boundaries while maintaining practical, user-centered solutions.</p>
                   </div>
                 </div>
               </div>
 
-              <!-- Contact Information Grid -->
+              <!-- Contact Information -->
               <div>
                 <h3 class="text-xl font-semibold text-white mb-4 flex items-center">
                   <div class="w-2 h-2 bg-gray-600 rounded-full mr-3"></div>
-                  Get In Touch
+                  Personal Information
                 </h3>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div class="flex items-center space-x-3 p-4 bg-gray-700/30 rounded-lg 

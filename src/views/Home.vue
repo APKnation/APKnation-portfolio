@@ -40,9 +40,9 @@
             
             <transition appear name="slide-up" :delay="400">
               <p class="text-sm sm:text-base md:text-lg lg:text-xl mb-4 sm:mb-6 md:mb-8 text-gray-300 max-w-lg mx-auto lg:mx-0">
-                I build exceptional digital experiences using modern technologies like Django, Laravel, Vue.js, Angular, and Tailwind CSS. 
-                From intuitive user interfaces to robust backend systems, I focus on creating innovative, scalable, and impactful 
-                solutions that solve real-world problems and elevate user satisfaction.
+                Welcome to my digital space where creativity meets functionality. I'm a passionate software engineer 
+                dedicated to crafting innovative solutions that bridge technology and human needs. Explore my journey 
+                through code, design, and continuous learning as we build the future together.
               </p>
             </transition>
             
