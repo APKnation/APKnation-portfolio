@@ -8,6 +8,7 @@ import taskImage from '@/assets/images/task.png'
 import farmerImage from '@/assets/images/farmer.png'
 import timberImage from '@/assets/images/timber.jpeg'
 import schoolImage from '@/assets/images/school.png'
+import moviehubImage from '@/assets/images/moviehub.png'
 
 // Fallback paths for local development
 const getImagePath = (importedImage, fallbackPath) => {
@@ -118,6 +119,17 @@ export const usePortfolioStore = defineStore('portfolio', () => {
       description: 'Comprehensive platform for managing student records, attendance, grading, and communication between teachers, students, and parents.',
       image: getImagePath(schoolImage, '/src/assets/images/school.png'),
       technologies: ['Vue.js', 'Laravel', 'MySQL', 'Tailwind CSS', 'REST API'],
+      category: 'web',
+      demoUrl: '#',
+      githubUrl: '#',
+      featured: true
+    },
+    {
+      id: 7,
+      title: 'APKnation MovieHub',
+      description: 'A modern movie discovery platform for finding the perfect film. Search thousands of movies with tailored recommendations for your next favorite viewing experience.',
+      image: getImagePath(moviehubImage, '/src/assets/images/moviehub.png'),
+      technologies: ['Vue.js', 'Tailwind CSS', 'REST API', 'TMDB API'],
       category: 'web',
       demoUrl: '#',
       githubUrl: '#',
