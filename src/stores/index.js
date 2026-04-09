@@ -8,6 +8,7 @@ import taskImage from '@/assets/images/task.png'
 import farmerImage from '@/assets/images/farmer.png'
 import timberImage from '@/assets/images/timber.jpeg'
 import schoolImage from '@/assets/images/school.png'
+import weatherImage from '@/assets/images/weather.jpeg'
 import moviehubImage from '@/assets/images/moviehub.png'
 
 // Fallback paths for local development
@@ -126,6 +127,17 @@ export const usePortfolioStore = defineStore('portfolio', () => {
     },
     {
       id: 7,
+      title: 'Tanzania Weather Tracker',
+      description: 'Real-time weather tracking application that provides current weather conditions, forecasts, and location-based weather updates specifically for Tanzania regions.',
+      image: getImagePath(weatherImage, '/src/assets/images/weather.jpeg'),
+      technologies: ['Vue.js', 'OpenWeather API', 'Geolocation API', 'Chart.js', 'Tailwind CSS'],
+      category: 'web',
+      demoUrl: '#',
+      githubUrl: '#',
+      featured: true
+    },
+    {
+      id: 8,
       title: 'APKnation MovieHub',
       description: 'A modern movie discovery platform for finding the perfect film. Search thousands of movies with tailored recommendations for your next favorite viewing experience.',
       image: getImagePath(moviehubImage, '/src/assets/images/moviehub.png'),
