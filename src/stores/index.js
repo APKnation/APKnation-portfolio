@@ -150,15 +150,15 @@ export const usePortfolioStore = defineStore('portfolio', () => {
   ])
   
   const skills = ref([
-    { name: 'JavaScript', level: 90, icon: '🟨', color: 'yellow' },
-    { name: 'PHP', level: 85, icon: '🐘', color: 'indigo' },
-    { name: 'Django', level: 88, icon: '⚛️', color: 'green' },
-    { name: 'HTML/CSS', level: 95, icon: '🖥️', color: 'orange' },
-    { name: 'Tailwind', level: 92, icon: '🌀', color: 'cyan' },
-    { name: 'Angular.js', level: 80, icon: '🟢', color: 'green' },
-    { name: 'Laravel', level: 87, icon: '🔷', color: 'red' },
-    { name: 'Vue.js', level: 83, icon: '💚', color: 'green' },
-    { name: 'SQL', level: 75, icon: '🗄️', color: 'purple' }
+    { name: 'JavaScript', icon: '', color: 'yellow' },
+    { name: 'PHP', icon: '', color: 'indigo' },
+    { name: 'Django', icon: '', color: 'green' },
+    { name: 'HTML/CSS', icon: '', color: 'orange' },
+    { name: 'Tailwind', icon: '', color: 'cyan' },
+    { name: 'Angular.js', icon: '', color: 'green' },
+    { name: 'React.js', icon: '', color: 'blue' },
+    { name: 'Vue.js', icon: '', color: 'green' },
+    { name: 'SQL', icon: '', color: 'purple' }
   ])
   
   const filteredProjects = computed(() => {

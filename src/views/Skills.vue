@@ -1,5 +1,5 @@
 <template>
-  <section id="skills" class="py-4 sm:py-6 px-4 text-white dark:text-gray-100">
+  <section id="skills" class="py-4 sm:py-6 px-4 text-white dark:text-gray-100 bg-gradient-to-br from-purple-900/40 via-blue-900/40 to-indigo-900/40 dark:from-purple-950/50 dark:via-blue-950/50 dark:to-indigo-950/50">
     <div class="max-w-7xl mx-auto">
       <transition appear name="fade">
         <h2 class="text-xl sm:text-2xl md:text-3xl font-bold text-center mb-3 sm:mb-4 md:mb-6 text-white dark:text-gray-100">
@@ -22,27 +22,28 @@
           
           <!-- Responsive Skills Display -->
           <div class="space-y-4">
-            <!-- Mobile: Horizontal Bars -->
-            <div class="block sm:hidden space-y-3">
-              <div
-                v-for="(skill, index) in skills"
-                :key="skill.name"
-                class="skill-bar-mobile group"
-                :style="{ transitionDelay: `${index * 50}ms` }"
-              >
-                <div class="flex items-center justify-between mb-1">
-                  <div class="flex items-center space-x-2">
-                    <span class="text-lg">{{ skill.icon }}</span>
-                    <span class="text-white text-sm font-medium">{{ skill.name }}</span>
-                  </div>
-                  <span class="text-primary-400 text-sm font-bold">{{ skill.level }}%</span>
-                </div>
-                <div class="relative h-2 bg-gray-700 rounded-full overflow-hidden">
-                  <div 
-                    class="h-full bg-gradient-to-r from-primary-600 to-secondary-600 rounded-full transition-all duration-1000 ease-out"
-                    :style="{ width: `${skill.level}%` }"
-                  >
-                    <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shimmer"></div>
+            <!-- Mobile: Grid Layout -->
+            <div class="block sm:hidden">
+              <div class="grid grid-cols-2 gap-3">
+                <div
+                  v-for="(skill, index) in skills"
+                  :key="skill.name"
+                  class="skill-card-mobile group bg-gradient-to-br from-purple-800/60 to-blue-800/60 backdrop-blur-sm rounded-lg p-3 border border-purple-600/50 
+                         hover:border-primary-500/50 hover:from-purple-700/70 hover:to-blue-700/70 transition-all duration-500 transform hover:scale-105"
+                  :style="{ transitionDelay: `${index * 30}ms` }"
+                >
+                  <div class="h-full flex items-center justify-center">
+                    <div class="text-center">
+                      <div class="w-8 h-8 mx-auto mb-1 flex items-center justify-center">
+                        <span class="text-lg sm:text-xl group-hover:animate-bounce">
+                          {{ skill.icon }}
+                        </span>
+                      </div>
+                      <h4 class="font-medium text-white text-sm sm:text-base text-center 
+                                 group-hover:text-primary-300 transition-all duration-300 leading-tight">
+                        {{ skill.name }}
+                      </h4>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -56,50 +57,22 @@
                 class="skill-circle group"
                 :style="{ transitionDelay: `${index * 50}ms` }"
               >
-                <!-- Circular Progress -->
-                <div class="relative w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-20 lg:h-24 mx-auto mb-1 sm:mb-1.5">
-                  <!-- SVG Circle Background -->
-                  <svg class="absolute inset-0 transform -rotate-90 w-full h-full">
-                    <circle
-                      cx="50%"
-                      cy="50%"
-                      r="35%"
-                      stroke="currentColor"
-                      stroke-width="3"
-                      fill="none"
-                      class="text-gray-700"
-                    />
-                    <circle
-                      cx="50%"
-                      cy="50%"
-                      r="35%"
-                      stroke="currentColor"
-                      stroke-width="3"
-                      fill="none"
-                      :stroke-dasharray="`${circumference}`"
-                      :stroke-dashoffset="circumference - (skill.level / 100) * circumference"
-                      class="text-primary-500 transition-all duration-1000 ease-out group-hover:text-primary-400"
-                      stroke-linecap="round"
-                    />
-                  </svg>
-                  
-                  <!-- Center Content -->
-                  <div class="absolute inset-0 flex flex-col items-center justify-center">
-                    <span class="text-xs sm:text-xs md:text-sm lg:text-lg mb-0.5 group-hover:animate-bounce">
-                      {{ skill.icon }}
-                    </span>
-                    <span class="text-xs font-bold text-white">
-                      {{ skill.level }}%
-                    </span>
+                <!-- Skill Icon and Name -->
+                <div class="bg-gradient-to-br from-purple-800/60 to-blue-800/60 backdrop-blur-sm rounded-lg p-2 sm:p-3 border border-purple-600/50 
+                           hover:border-primary-500/50 hover:from-purple-700/70 hover:to-blue-700/70 transition-all duration-500 h-full flex items-center justify-center">
+                  <div class="text-center">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-20 mx-auto mb-1 sm:mb-1.5 flex items-center justify-center">
+                      <span class="text-lg sm:text-xl md:text-2xl lg:text-3xl group-hover:animate-bounce">
+                        {{ skill.icon }}
+                      </span>
+                    </div>
+                    <h4 class="font-medium text-white text-sm sm:text-sm md:text-base lg:text-lg text-center 
+                               group-hover:text-primary-300 transition-all duration-300 
+                               transform group-hover:scale-105 leading-tight">
+                      {{ skill.name }}
+                    </h4>
                   </div>
                 </div>
-                
-                <!-- Skill Name -->
-                <h4 class="font-medium text-white text-xs text-center 
-                           group-hover:text-primary-300 transition-all duration-300 
-                           transform group-hover:scale-105">
-                  {{ skill.name }}
-                </h4>
               </div>
             </div>
           </div>
@@ -358,10 +331,10 @@ const getSkillBarClass = (color) => {
   animation: fadeInUp 0.6s ease-out forwards;
 }
 
-.skill-bar-mobile {
+.skill-card-mobile {
   opacity: 0;
-  transform: translateX(-20px);
-  animation: fadeInLeft 0.6s ease-out forwards;
+  transform: translateY(20px) scale(0.95);
+  animation: fadeInUp 0.6s ease-out forwards;
 }
 
 .category-card {
