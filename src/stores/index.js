@@ -151,6 +151,7 @@ export const usePortfolioStore = defineStore('portfolio', () => {
   
   const skills = ref([
     { name: 'JavaScript', icon: '', color: 'yellow' },
+    { name: 'Python', icon: '', color: 'blue' },
     { name: 'PHP', icon: '', color: 'indigo' },
     { name: 'Django', icon: '', color: 'green' },
     { name: 'HTML/CSS', icon: '', color: 'orange' },
