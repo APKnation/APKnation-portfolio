@@ -10,6 +10,8 @@ import timberImage from '@/assets/images/timber.jpeg'
 import schoolImage from '@/assets/images/school.png'
 import weatherImage from '@/assets/images/weather.jpeg'
 import moviehubImage from '@/assets/images/moviehub.png'
+import hotelImage from '@/assets/images/hotel.png'
+import lmsImage from '@/assets/images/lms.png'
 
 // Fallback paths for local development
 const getImagePath = (importedImage, fallbackPath) => {
@@ -64,7 +66,7 @@ export const usePortfolioStore = defineStore('portfolio', () => {
       title: 'E-Commerce Platform',
       description: 'A full-featured online store with payment integration and inventory management.',
       image: getImagePath(ecommerceImage, '/src/assets/images/ecommerce.png'),
-      technologies: ['React', 'Node.js', 'MongoDB'],
+      technologies: ['React.js', 'Tailwind CSS', 'SQLite', 'Node.js'],
       category: 'web',
       demoUrl: '#',
       githubUrl: '#',
@@ -75,7 +77,7 @@ export const usePortfolioStore = defineStore('portfolio', () => {
       title: 'Fitness Tracker App',
       description: 'Mobile application for tracking workouts, nutrition, and health metrics.',
       image: getImagePath(trackerImage, '/src/assets/images/tracker.png'),
-      technologies: ['React Native', 'Firebase', 'Redux'],
+      technologies: ['Vue.js', 'Django', 'SQLite', 'Tailwind CSS'],
       category: 'mobile',
       demoUrl: '#',
       githubUrl: '#',
@@ -86,7 +88,7 @@ export const usePortfolioStore = defineStore('portfolio', () => {
       title: 'Task Management System',
       description: 'Collaborative tool for teams to manage projects and tasks efficiently.',
       image: getImagePath(taskImage, '/src/assets/images/task.png'),
-      technologies: ['Vue.js', 'Express', 'PostgreSQL'],
+      technologies: ['HTML', 'Tailwind CSS', 'Vue.js', 'SQLite'],
       category: 'web',
       demoUrl: '#',
       githubUrl: '#',
@@ -97,7 +99,7 @@ export const usePortfolioStore = defineStore('portfolio', () => {
       title: 'Sustainable Farm Marketplace',
       description: 'E-commerce platform connecting sustainable farmers with consumers for direct product sales.',
       image: getImagePath(farmerImage, '/src/assets/images/farmer.png'),
-      technologies: ['Vue.js', 'Laravel', 'MySQL', 'Tailwind CSS'],
+      technologies: ['Django', 'React.js', 'SQLite', 'Tailwind CSS'],
       category: 'web',
       demoUrl: '#',
       githubUrl: '#',
@@ -108,7 +110,7 @@ export const usePortfolioStore = defineStore('portfolio', () => {
       title: 'Timber Management System',
       description: 'Mobile application for efficient timber inventory tracking, logging operations, and forest resource management.',
       image: getImagePath(timberImage, '/src/assets/images/timber.jpeg'),
-      technologies: ['React Native', 'Firebase', 'Node.js', 'MongoDB', 'GPS Tracking'],
+      technologies: ['Vue.js', 'SQLite', 'Tailwind CSS', 'HTML'],
       category: 'mobile',
       demoUrl: '#',
       githubUrl: '#',
@@ -119,7 +121,7 @@ export const usePortfolioStore = defineStore('portfolio', () => {
       title: 'School Management System',
       description: 'Comprehensive platform for managing student records, attendance, grading, and communication between teachers, students, and parents.',
       image: getImagePath(schoolImage, '/src/assets/images/school.png'),
-      technologies: ['Vue.js', 'Laravel', 'MySQL', 'Tailwind CSS', 'REST API'],
+      technologies: ['Django', 'Vue.js', 'SQLite', 'Tailwind CSS'],
       category: 'web',
       demoUrl: '#',
       githubUrl: '#',
@@ -130,7 +132,7 @@ export const usePortfolioStore = defineStore('portfolio', () => {
       title: 'Tanzania Weather Tracker',
       description: 'Real-time weather tracking application that provides current weather conditions, forecasts, and location-based weather updates specifically for Tanzania regions.',
       image: getImagePath(weatherImage, '/src/assets/images/weather.jpeg'),
-      technologies: ['Vue.js', 'OpenWeather API', 'Geolocation API', 'Chart.js', 'Tailwind CSS'],
+      technologies: ['React.js', 'HTML', 'Tailwind CSS', 'SQLite'],
       category: 'web',
       demoUrl: '#',
       githubUrl: '#',
@@ -141,7 +143,29 @@ export const usePortfolioStore = defineStore('portfolio', () => {
       title: 'APKnation MovieHub',
       description: 'A modern movie discovery platform for finding the perfect film. Search thousands of movies with tailored recommendations for your next favorite viewing experience.',
       image: getImagePath(moviehubImage, '/src/assets/images/moviehub.png'),
-      technologies: ['Vue.js', 'Tailwind CSS', 'REST API', 'TMDB API'],
+      technologies: ['Vue.js', 'Django', 'SQLite', 'Tailwind CSS'],
+      category: 'web',
+      demoUrl: '#',
+      githubUrl: '#',
+      featured: true
+    },
+    {
+      id: 9,
+      title: 'Learning Management System (LMS)',
+      description: 'Comprehensive educational platform for course creation, student enrollment, progress tracking, and interactive learning experiences with multimedia content support.',
+      image: getImagePath(lmsImage, '/src/assets/images/lms.png'),
+      technologies: ['React.js', 'Django', 'SQLite', 'Tailwind CSS'],
+      category: 'web',
+      demoUrl: '#',
+      githubUrl: '#',
+      featured: true
+    },
+    {
+      id: 10,
+      title: 'Hotel Management System',
+      description: 'Complete hotel operations management solution with room booking, guest services, staff management, billing, and real-time inventory tracking.',
+      image: getImagePath(hotelImage, '/src/assets/images/hotel.png'),
+      technologies: ['Vue.js', 'HTML', 'SQLite', 'Tailwind CSS'],
       category: 'web',
       demoUrl: '#',
       githubUrl: '#',
