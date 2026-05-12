@@ -12,6 +12,7 @@ import weatherImage from '@/assets/images/weather.jpeg'
 import moviehubImage from '@/assets/images/moviehub.png'
 import hotelImage from '@/assets/images/hotel.png'
 import lmsImage from '@/assets/images/lms.png'
+import bankingImage from '@/assets/images/banking.jpeg'
 
 // Fallback paths for local development
 const getImagePath = (importedImage, fallbackPath) => {
@@ -175,7 +176,7 @@ export const usePortfolioStore = defineStore('portfolio', () => {
       id: 11,
       title: 'Banking System',
       description: 'Modern banking application with account management, fund transfers, transaction tracking, and secure authentication for seamless financial operations.',
-      image: getImagePath(null, '/src/assets/images/banking.jpeg'),
+      image: getImagePath(bankingImage, '/src/assets/images/banking.jpeg'),
       technologies: ['Spring Boot', 'React.js', 'MySQL', 'Tailwind CSS'],
       category: 'web',
       demoUrl: '#',
