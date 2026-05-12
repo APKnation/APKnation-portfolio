@@ -170,6 +170,17 @@ export const usePortfolioStore = defineStore('portfolio', () => {
       demoUrl: '#',
       githubUrl: '#',
       featured: true
+    },
+    {
+      id: 11,
+      title: 'Banking System',
+      description: 'Modern banking application with account management, fund transfers, transaction tracking, and secure authentication for seamless financial operations.',
+      image: getImagePath(hotelImage, '/src/assets/images/hotel.png'),
+      technologies: ['Spring Boot', 'React.js', 'MySQL', 'Tailwind CSS'],
+      category: 'web',
+      demoUrl: '#',
+      githubUrl: '#',
+      featured: true
     }
   ])
   
