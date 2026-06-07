@@ -2,6 +2,8 @@ import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 
 // Import images directly for production build
+import furnitureImage from '@/assets/images/furniture.png'
+import kazihubImage from '@/assets/images/kazihub.png'
 import ecommerceImage from '@/assets/images/ecommerce.png'
 import trackerImage from '@/assets/images/tracker.png'
 import taskImage from '@/assets/images/task.png'
@@ -62,6 +64,28 @@ export const useThemeStore = defineStore('theme', () => {
 
 export const usePortfolioStore = defineStore('portfolio', () => {
   const projects = ref([
+    {
+      id: 12,
+      title: 'Furniture E-Commerce Platform',
+      description: 'A full-featured furniture online store with product catalog, category management, cart system, order tracking, and admin dashboard built with Spring Boot and React.',
+      image: furnitureImage,
+      technologies: ['Spring Boot', 'React.js', 'MySQL', 'Tailwind CSS'],
+      category: 'web',
+      demoUrl: '#',
+      githubUrl: '#',
+      featured: true
+    },
+    {
+      id: 13,
+      title: 'KaziHub Job Platform',
+      description: 'A modern job marketplace platform connecting employers and job seekers with smart filtering, real-time notifications, application tracking, and profile management.',
+      image: kazihubImage,
+      technologies: ['Vue.js', 'Django', 'PostgreSQL', 'Tailwind CSS'],
+      category: 'web',
+      demoUrl: '#',
+      githubUrl: '#',
+      featured: true
+    },
     {
       id: 1,
       title: 'E-Commerce Platform',
