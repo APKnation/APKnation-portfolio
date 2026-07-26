@@ -15,6 +15,7 @@ import moviehubImage from '@/assets/images/moviehub.png'
 import hotelImage from '@/assets/images/hotel.png'
 import lmsImage from '@/assets/images/lms.png'
 import bankingImage from '@/assets/images/banking.jpeg'
+import majiSalamaImage from '@/assets/images/majisalama.png'
 
 // Fallback paths for local development
 const getImagePath = (importedImage, fallbackPath) => {
@@ -206,6 +207,17 @@ export const usePortfolioStore = defineStore('portfolio', () => {
       demoUrl: '#',
       githubUrl: '#',
       featured: true
+    },
+    {
+      id: 14,
+      title: 'Maji Salama Water Management',
+      description: 'Water resource management system for monitoring, tracking, and optimizing water distribution and conservation initiatives.',
+      image: getImagePath(majiSalamaImage, '/src/assets/images/majisalama.png'),
+      technologies: ['Vue.js', 'Django', 'PostgreSQL', 'Tailwind CSS'],
+      category: 'web',
+      demoUrl: '#',
+      githubUrl: '#',
+      featured: true
     }
   ])
   
@@ -213,6 +225,8 @@ export const usePortfolioStore = defineStore('portfolio', () => {
     { name: 'JavaScript', icon: '', color: 'yellow' },
     { name: 'Python', icon: '', color: 'blue' },
     { name: 'PHP', icon: '', color: 'indigo' },
+    { name: 'Java', icon: '', color: 'red' },
+    { name: 'Spring Boot', icon: '', color: 'green' },
     { name: 'Django', icon: '', color: 'green' },
     { name: 'HTML/CSS', icon: '', color: 'orange' },
     { name: 'Tailwind', icon: '', color: 'cyan' },
