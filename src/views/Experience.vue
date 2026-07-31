@@ -1,5 +1,5 @@
 <template>
-  <section id="experience" class="py-8 sm:py-12 px-4 text-white dark:text-gray-100 relative z-10 pt-24 sm:pt-32">
+  <section id="experience" class="py-6 sm:py-16 px-4 text-white dark:text-gray-100 relative z-10">
     <div class="max-w-7xl mx-auto">
       <transition appear name="fade">
         <h2 class="text-xl sm:text-2xl md:text-3xl font-bold text-center mb-3 sm:mb-4 md:mb-6 text-white dark:text-gray-100">

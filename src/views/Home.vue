@@ -3,7 +3,7 @@
     <!-- Simple Animation Background -->
     <SimpleAnimation />
     
-    <section id="hero" class="h-screen flex items-center justify-center text-white relative overflow-hidden bg-gray-900 dark:bg-black">
+    <section id="hero" class="pt-24 pb-16 sm:pt-32 sm:pb-20 flex flex-col items-center justify-center text-white relative overflow-hidden bg-gray-900 dark:bg-black">
       <!-- Dark Background Overlay -->
       <div class="absolute inset-0 bg-gradient-to-br from-gray-900/95 via-black/95 to-gray-900/95"></div>
       
@@ -19,7 +19,7 @@
         <div class="absolute bottom-40 right-1/3 w-36 h-36 bg-indigo-500/30 rounded-full blur-3xl animate-pulse delay-300"></div>
       </div>
       
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 relative z-10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-10 relative z-10 w-full">
         <div class="flex flex-col-reverse lg:flex-row items-center justify-between gap-8 lg:gap-0">
           <!-- Text Content -->
           <div class="w-full lg:w-1/2 text-center lg:text-left">
@@ -87,39 +87,30 @@
           </transition>
         </div>
 
-        <!-- Scroll Indicator -->
-        <div class="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2 z-10">
-          <a href="#about" class="animate-bounce text-cyan-300 hover:text-white transition-colors duration-200">
-            <ChevronDown class="w-6 h-6 sm:w-8 sm:h-8" />
-          </a>
-        </div>
       </div>
-      </section>
+      
+      <!-- Scroll Indicator -->
+      <div class="absolute bottom-4 sm:bottom-6 left-1/2 transform -translate-x-1/2 z-10">
+        <a href="#about" class="animate-bounce text-cyan-300 hover:text-white transition-colors duration-200 block">
+          <ChevronDown class="w-6 h-6 sm:w-8 sm:h-8" />
+        </a>
+      </div>
+    </section>
 
     <!-- About Section -->
-    <section id="about" class="py-4 sm:py-6 bg-gray-900 dark:bg-black text-white dark:text-gray-100">
-      <About />
-    </section>
+    <About />
     
     <!-- Skills Section -->
-    <section id="skills" class="py-3 sm:py-4 bg-gray-800 dark:bg-gray-900 text-white dark:text-gray-100">
-      <Skills />
-    </section>
+    <Skills />
     
     <!-- Experience Section -->
-    <section id="experience" class="py-6 sm:py-8 bg-gray-900 dark:bg-black text-white dark:text-gray-100">
-      <Experience />
-    </section>
+    <Experience />
     
     <!-- Projects Section -->
-    <section id="projects" class="py-2 sm:py-3 bg-gray-800 dark:bg-gray-900 text-white dark:text-gray-100">
-      <Projects />
-    </section>
+    <Projects />
     
     <!-- Contact Section -->
-    <section id="contact" class="py-4 sm:py-6 bg-gray-900 dark:bg-black text-white dark:text-gray-100">
-      <Contact />
-    </section>
+    <Contact />
   </div>
 </template>
 

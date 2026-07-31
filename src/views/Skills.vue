@@ -21,58 +21,29 @@
           </p>
           
           <!-- Responsive Skills Display -->
-          <div class="space-y-4">
-            <!-- Mobile: Grid Layout -->
-            <div class="block sm:hidden">
-              <div class="grid grid-cols-2 gap-3">
-                <div
-                  v-for="(skill, index) in skills"
-                  :key="skill.name"
-                  class="skill-card-mobile group bg-gradient-to-br from-purple-800/60 to-blue-800/60 backdrop-blur-sm rounded-lg p-3 border border-purple-600/50 
-                         hover:border-primary-500/50 hover:from-purple-700/70 hover:to-blue-700/70 transition-all duration-500 transform hover:scale-105"
-                  :style="{ transitionDelay: `${index * 30}ms` }"
-                >
-                  <div class="h-full flex items-center justify-center">
-                    <div class="text-center">
-                      <div class="w-8 h-8 mx-auto mb-1 flex items-center justify-center">
-                        <span class="text-lg sm:text-xl group-hover:animate-bounce">
-                          {{ skill.icon }}
-                        </span>
-                      </div>
-                      <h4 class="font-medium text-white text-sm sm:text-base text-center 
-                                 group-hover:text-primary-300 transition-all duration-300 leading-tight">
-                        {{ skill.name }}
-                      </h4>
-                    </div>
-                  </div>
+          <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-6">
+            <div
+              v-for="(skill, index) in skills"
+              :key="skill.name"
+              class="skill-card group relative p-px rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-500"
+              :style="{ transitionDelay: `${index * 30}ms` }"
+            >
+              <!-- Animated Border Gradient -->
+              <div class="absolute inset-0 bg-gradient-to-br from-gray-700/50 via-gray-800/50 to-gray-700/50 
+                          group-hover:from-primary-500 group-hover:via-secondary-500 group-hover:to-primary-500 transition-colors duration-500"></div>
+              
+              <div class="relative h-full bg-gray-900/90 backdrop-blur-xl rounded-[15px] p-5 flex flex-col items-center justify-center
+                          group-hover:bg-gray-800/90 transition-colors duration-500">
+                <div class="w-14 h-14 lg:w-16 lg:h-16 mx-auto mb-3 flex items-center justify-center rounded-xl bg-gray-800/80 
+                            border border-gray-700/50 group-hover:border-primary-500/50 group-hover:bg-gray-700/80 transition-all duration-300">
+                  <span class="text-3xl lg:text-4xl group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300 filter drop-shadow-md">
+                    {{ skill.icon }}
+                  </span>
                 </div>
-              </div>
-            </div>
-            
-            <!-- Desktop: Circular Progress -->
-            <div class="hidden sm:grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-1.5 sm:gap-2 md:gap-3 lg:gap-4">
-              <div
-                v-for="(skill, index) in skills"
-                :key="skill.name"
-                class="skill-circle group"
-                :style="{ transitionDelay: `${index * 50}ms` }"
-              >
-                <!-- Skill Icon and Name -->
-                <div class="bg-gradient-to-br from-purple-800/60 to-blue-800/60 backdrop-blur-sm rounded-lg p-2 sm:p-3 border border-purple-600/50 
-                           hover:border-primary-500/50 hover:from-purple-700/70 hover:to-blue-700/70 transition-all duration-500 h-full flex items-center justify-center">
-                  <div class="text-center">
-                    <div class="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-20 mx-auto mb-1 sm:mb-1.5 flex items-center justify-center">
-                      <span class="text-lg sm:text-xl md:text-2xl lg:text-3xl group-hover:animate-bounce">
-                        {{ skill.icon }}
-                      </span>
-                    </div>
-                    <h4 class="font-medium text-white text-sm sm:text-sm md:text-base lg:text-lg text-center 
-                               group-hover:text-primary-300 transition-all duration-300 
-                               transform group-hover:scale-105 leading-tight">
-                      {{ skill.name }}
-                    </h4>
-                  </div>
-                </div>
+                <h4 class="font-semibold text-gray-300 text-sm sm:text-base text-center tracking-wide
+                           group-hover:text-white transition-colors duration-300">
+                  {{ skill.name }}
+                </h4>
               </div>
             </div>
           </div>
@@ -86,30 +57,41 @@
             </h3>
           </transition>
           
-          <div class="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-            <div class="bg-gray-800/50 backdrop-blur-sm rounded-lg p-4 border border-gray-700/50 
-                           hover:border-primary-500/50 transition-all duration-500">
-              <h4 class="text-white text-sm font-semibold mb-2 flex items-center">
-                <div class="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
+          <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="group relative bg-gray-800/40 backdrop-blur-lg rounded-2xl p-6 border border-gray-700/50 
+                        hover:border-green-500/50 hover:bg-gray-800/60 transition-all duration-500 shadow-lg hover:shadow-green-500/10">
+              <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                <div class="w-12 h-12 rounded-full bg-green-500 blur-xl"></div>
+              </div>
+              <h4 class="text-white text-base lg:text-lg font-semibold mb-3 flex items-center">
+                <div class="w-2.5 h-2.5 bg-green-500 rounded-full mr-3 shadow-[0_0_8px_rgba(34,197,94,0.6)]"></div>
                 Agile Methodologies
               </h4>
-              <p class="text-gray-400 text-xs">Scrum, Kanban, iterative development with continuous feedback loops</p>
+              <p class="text-gray-400 text-sm leading-relaxed">Scrum, Kanban, iterative development with continuous feedback loops ensuring rapid and reliable delivery.</p>
             </div>
-            <div class="bg-gray-800/50 backdrop-blur-sm rounded-lg p-4 border border-gray-700/50 
-                           hover:border-primary-500/50 transition-all duration-500">
-              <h4 class="text-white text-sm font-semibold mb-2 flex items-center">
-                <div class="w-2 h-2 bg-blue-500 rounded-full mr-2"></div>
-                Clean Code Principles
+            
+            <div class="group relative bg-gray-800/40 backdrop-blur-lg rounded-2xl p-6 border border-gray-700/50 
+                        hover:border-blue-500/50 hover:bg-gray-800/60 transition-all duration-500 shadow-lg hover:shadow-blue-500/10">
+              <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                <div class="w-12 h-12 rounded-full bg-blue-500 blur-xl"></div>
+              </div>
+              <h4 class="text-white text-base lg:text-lg font-semibold mb-3 flex items-center">
+                <div class="w-2.5 h-2.5 bg-blue-500 rounded-full mr-3 shadow-[0_0_8px_rgba(59,130,246,0.6)]"></div>
+                Clean Code
               </h4>
-              <p class="text-gray-400 text-xs">SOLID principles, DRY, KISS, maintainable and readable code architecture</p>
+              <p class="text-gray-400 text-sm leading-relaxed">SOLID principles, DRY, KISS, crafting maintainable, scalable, and highly readable code architecture.</p>
             </div>
-            <div class="bg-gray-800/50 backdrop-blur-sm rounded-lg p-4 border border-gray-700/50 
-                           hover:border-primary-500/50 transition-all duration-500">
-              <h4 class="text-white text-sm font-semibold mb-2 flex items-center">
-                <div class="w-2 h-2 bg-purple-500 rounded-full mr-2"></div>
+            
+            <div class="group relative bg-gray-800/40 backdrop-blur-lg rounded-2xl p-6 border border-gray-700/50 
+                        hover:border-purple-500/50 hover:bg-gray-800/60 transition-all duration-500 shadow-lg hover:shadow-purple-500/10">
+              <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                <div class="w-12 h-12 rounded-full bg-purple-500 blur-xl"></div>
+              </div>
+              <h4 class="text-white text-base lg:text-lg font-semibold mb-3 flex items-center">
+                <div class="w-2.5 h-2.5 bg-purple-500 rounded-full mr-3 shadow-[0_0_8px_rgba(168,85,247,0.6)]"></div>
                 Testing Strategies
               </h4>
-              <p class="text-gray-400 text-xs">Unit testing, integration testing, TDD approach for reliable software</p>
+              <p class="text-gray-400 text-sm leading-relaxed">Comprehensive unit testing, integration testing, and a TDD approach for bulletproof software.</p>
             </div>
           </div>
         </div>
@@ -122,149 +104,95 @@
             </h3>
           </transition>
           
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-3 lg:gap-4">
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             <!-- Frontend Development -->
-            <div class="category-card group">
-              <div class="bg-gray-800/50 backdrop-blur-sm rounded-md p-2 sm:p-3 border border-gray-700/50 
-                         hover:border-primary-500/50 transition-all duration-500 transform 
-                         hover:scale-105 hover:shadow-xl hover:shadow-primary-500/20">
-                <div class="text-center mb-1.5 sm:mb-2">
-                  <div class="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-full 
-                               flex items-center justify-center mx-auto mb-1.5 sm:mb-2 group-hover:animate-pulse">
-                    <Code class="w-4 h-4 sm:w-5 sm:h-5 text-white" />
+            <div class="category-card group relative">
+              <div class="absolute -inset-0.5 bg-gradient-to-br from-blue-500/0 to-cyan-500/0 rounded-2xl blur opacity-0 group-hover:from-blue-500/30 group-hover:to-cyan-500/30 group-hover:opacity-100 transition duration-700"></div>
+              <div class="relative h-full bg-gray-900/80 backdrop-blur-xl rounded-2xl p-6 lg:p-8 border border-gray-700/50 
+                          group-hover:border-blue-500/50 transition-all duration-500">
+                <div class="text-center mb-8">
+                  <div class="w-16 h-16 bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700/50 rounded-2xl 
+                              flex items-center justify-center mx-auto mb-4 group-hover:rotate-6 group-hover:scale-110 transition-transform duration-500 shadow-xl">
+                    <Code class="w-8 h-8 text-blue-400" />
                   </div>
-                  <h4 class="text-xs sm:text-sm font-semibold text-white mb-0.5">Frontend Development</h4>
-                  <p class="text-gray-400 text-xs">Building responsive and interactive user interfaces</p>
+                  <h4 class="text-lg font-bold text-white tracking-wide mb-2">Frontend</h4>
+                  <p class="text-gray-400 text-sm">Crafting responsive and interactive UIs</p>
                 </div>
                 
-                <div class="space-y-1">
-                  <div class="flex items-center justify-between text-xs">
-                    <span class="text-gray-300">Vue.js</span>
-                    <div class="flex space-x-0.5">
-                      <div class="w-0.5 h-0.5 sm:w-1 sm:h-1 bg-primary-500 rounded-full"></div>
-                      <div class="w-0.5 h-0.5 sm:w-1 sm:h-1 bg-primary-500 rounded-full"></div>
-                      <div class="w-0.5 h-0.5 sm:w-1 sm:h-1 bg-primary-500 rounded-full"></div>
-                      <div class="w-0.5 h-0.5 sm:w-1 sm:h-1 bg-primary-500 rounded-full"></div>
-                      <div class="w-0.5 h-0.5 sm:w-1 sm:h-1 bg-gray-600 rounded-full"></div>
-                    </div>
+                <div class="space-y-5">
+                  <div class="skill-progress">
+                    <div class="flex justify-between text-sm mb-1.5"><span class="text-gray-200 font-medium">Vue.js</span><span class="text-blue-400">90%</span></div>
+                    <div class="w-full bg-gray-800 rounded-full h-1.5 overflow-hidden"><div class="bg-gradient-to-r from-blue-600 to-cyan-400 h-1.5 rounded-full w-[90%] shadow-[0_0_10px_rgba(56,189,248,0.5)]"></div></div>
                   </div>
-                  <div class="flex items-center justify-between text-xs">
-                    <span class="text-gray-300">React</span>
-                    <div class="flex space-x-0.5">
-                      <div class="w-0.5 h-0.5 sm:w-1 sm:h-1 bg-primary-500 rounded-full"></div>
-                      <div class="w-0.5 h-0.5 sm:w-1 sm:h-1 bg-primary-500 rounded-full"></div>
-                      <div class="w-0.5 h-0.5 sm:w-1 sm:h-1 bg-primary-500 rounded-full"></div>
-                      <div class="w-0.5 h-0.5 sm:w-1 sm:h-1 bg-primary-500 rounded-full"></div>
-                      <div class="w-0.5 h-0.5 sm:w-1 sm:h-1 bg-gray-600 rounded-full"></div>
-                    </div>
+                  <div class="skill-progress">
+                    <div class="flex justify-between text-sm mb-1.5"><span class="text-gray-200 font-medium">React</span><span class="text-blue-400">85%</span></div>
+                    <div class="w-full bg-gray-800 rounded-full h-1.5 overflow-hidden"><div class="bg-gradient-to-r from-blue-600 to-cyan-400 h-1.5 rounded-full w-[85%] shadow-[0_0_10px_rgba(56,189,248,0.5)]"></div></div>
                   </div>
-                  <div class="flex items-center justify-between text-xs">
-                    <span class="text-gray-300">Tailwind CSS</span>
-                    <div class="flex space-x-0.5">
-                      <div class="w-0.5 h-0.5 sm:w-1 sm:h-1 bg-primary-500 rounded-full"></div>
-                      <div class="w-0.5 h-0.5 sm:w-1 sm:h-1 bg-primary-500 rounded-full"></div>
-                      <div class="w-0.5 h-0.5 sm:w-1 sm:h-1 bg-primary-500 rounded-full"></div>
-                      <div class="w-0.5 h-0.5 sm:w-1 sm:h-1 bg-primary-500 rounded-full"></div>
-                      <div class="w-0.5 h-0.5 sm:w-1 sm:h-1 bg-primary-500 rounded-full"></div>
-                    </div>
+                  <div class="skill-progress">
+                    <div class="flex justify-between text-sm mb-1.5"><span class="text-gray-200 font-medium">Tailwind CSS</span><span class="text-blue-400">95%</span></div>
+                    <div class="w-full bg-gray-800 rounded-full h-1.5 overflow-hidden"><div class="bg-gradient-to-r from-blue-600 to-cyan-400 h-1.5 rounded-full w-[95%] shadow-[0_0_10px_rgba(56,189,248,0.5)]"></div></div>
                   </div>
                 </div>
               </div>
             </div>
 
             <!-- Backend Development -->
-            <div class="category-card group">
-              <div class="bg-gray-800/50 backdrop-blur-sm rounded-md p-2 sm:p-3 border border-gray-700/50 
-                         hover:border-primary-500/50 transition-all duration-500 transform 
-                         hover:scale-105 hover:shadow-xl hover:shadow-primary-500/20">
-                <div class="text-center mb-1.5 sm:mb-2">
-                  <div class="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-green-500 to-emerald-500 rounded-full 
-                               flex items-center justify-center mx-auto mb-1.5 sm:mb-2 group-hover:animate-pulse">
-                    <Server class="w-4 h-4 sm:w-5 sm:h-5 text-white" />
+            <div class="category-card group relative">
+              <div class="absolute -inset-0.5 bg-gradient-to-br from-green-500/0 to-emerald-500/0 rounded-2xl blur opacity-0 group-hover:from-green-500/30 group-hover:to-emerald-500/30 group-hover:opacity-100 transition duration-700"></div>
+              <div class="relative h-full bg-gray-900/80 backdrop-blur-xl rounded-2xl p-6 lg:p-8 border border-gray-700/50 
+                          group-hover:border-green-500/50 transition-all duration-500">
+                <div class="text-center mb-8">
+                  <div class="w-16 h-16 bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700/50 rounded-2xl 
+                              flex items-center justify-center mx-auto mb-4 group-hover:-rotate-6 group-hover:scale-110 transition-transform duration-500 shadow-xl">
+                    <Server class="w-8 h-8 text-green-400" />
                   </div>
-                  <h4 class="text-xs sm:text-sm font-semibold text-white mb-0.5">Backend Development</h4>
-                  <p class="text-gray-400 text-xs">Creating robust server-side applications and APIs</p>
+                  <h4 class="text-lg font-bold text-white tracking-wide mb-2">Backend</h4>
+                  <p class="text-gray-400 text-sm">Robust server-side architectures</p>
                 </div>
                 
-                <div class="space-y-1">
-                  <div class="flex items-center justify-between text-xs">
-                    <span class="text-gray-300">Laravel</span>
-                    <div class="flex space-x-0.5">
-                      <div class="w-0.5 h-0.5 sm:w-1 sm:h-1 bg-primary-500 rounded-full"></div>
-                      <div class="w-0.5 h-0.5 sm:w-1 sm:h-1 bg-primary-500 rounded-full"></div>
-                      <div class="w-0.5 h-0.5 sm:w-1 sm:h-1 bg-primary-500 rounded-full"></div>
-                      <div class="w-0.5 h-0.5 sm:w-1 sm:h-1 bg-primary-500 rounded-full"></div>
-                      <div class="w-0.5 h-0.5 sm:w-1 sm:h-1 bg-gray-600 rounded-full"></div>
-                    </div>
+                <div class="space-y-5">
+                  <div class="skill-progress">
+                    <div class="flex justify-between text-sm mb-1.5"><span class="text-gray-200 font-medium">Laravel</span><span class="text-green-400">85%</span></div>
+                    <div class="w-full bg-gray-800 rounded-full h-1.5 overflow-hidden"><div class="bg-gradient-to-r from-green-600 to-emerald-400 h-1.5 rounded-full w-[85%] shadow-[0_0_10px_rgba(52,211,153,0.5)]"></div></div>
                   </div>
-                  <div class="flex items-center justify-between text-xs">
-                    <span class="text-gray-300">Node.js</span>
-                    <div class="flex space-x-0.5">
-                      <div class="w-0.5 h-0.5 sm:w-1 sm:h-1 bg-primary-500 rounded-full"></div>
-                      <div class="w-0.5 h-0.5 sm:w-1 sm:h-1 bg-primary-500 rounded-full"></div>
-                      <div class="w-0.5 h-0.5 sm:w-1 sm:h-1 bg-primary-500 rounded-full"></div>
-                      <div class="w-0.5 h-0.5 sm:w-1 sm:h-1 bg-gray-600 rounded-full"></div>
-                      <div class="w-0.5 h-0.5 sm:w-1 sm:h-1 bg-gray-600 rounded-full"></div>
-                    </div>
+                  <div class="skill-progress">
+                    <div class="flex justify-between text-sm mb-1.5"><span class="text-gray-200 font-medium">Node.js</span><span class="text-green-400">75%</span></div>
+                    <div class="w-full bg-gray-800 rounded-full h-1.5 overflow-hidden"><div class="bg-gradient-to-r from-green-600 to-emerald-400 h-1.5 rounded-full w-[75%] shadow-[0_0_10px_rgba(52,211,153,0.5)]"></div></div>
                   </div>
-                  <div class="flex items-center justify-between text-xs">
-                    <span class="text-gray-300">Django</span>
-                    <div class="flex space-x-0.5">
-                      <div class="w-0.5 h-0.5 sm:w-1 sm:h-1 bg-primary-500 rounded-full"></div>
-                      <div class="w-0.5 h-0.5 sm:w-1 sm:h-1 bg-primary-500 rounded-full"></div>
-                      <div class="w-0.5 h-0.5 sm:w-1 sm:h-1 bg-primary-500 rounded-full"></div>
-                      <div class="w-0.5 h-0.5 sm:w-1 sm:h-1 bg-primary-500 rounded-full"></div>
-                      <div class="w-0.5 h-0.5 sm:w-1 sm:h-1 bg-gray-600 rounded-full"></div>
-                    </div>
+                  <div class="skill-progress">
+                    <div class="flex justify-between text-sm mb-1.5"><span class="text-gray-200 font-medium">Django</span><span class="text-green-400">80%</span></div>
+                    <div class="w-full bg-gray-800 rounded-full h-1.5 overflow-hidden"><div class="bg-gradient-to-r from-green-600 to-emerald-400 h-1.5 rounded-full w-[80%] shadow-[0_0_10px_rgba(52,211,153,0.5)]"></div></div>
                   </div>
                 </div>
               </div>
             </div>
 
-            <!-- Tools & Technologies -->
-            <div class="category-card group">
-              <div class="bg-gray-800/50 backdrop-blur-sm rounded-md p-2 sm:p-3 border border-gray-700/50 
-                         hover:border-primary-500/50 transition-all duration-500 transform 
-                         hover:scale-105 hover:shadow-xl hover:shadow-primary-500/20">
-                <div class="text-center mb-1.5 sm:mb-2">
-                  <div class="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full 
-                               flex items-center justify-center mx-auto mb-1.5 sm:mb-2 group-hover:animate-pulse">
-                    <Wrench class="w-4 h-4 sm:w-5 sm:h-5 text-white" />
+            <!-- Tools & Tech -->
+            <div class="category-card group relative">
+              <div class="absolute -inset-0.5 bg-gradient-to-br from-purple-500/0 to-pink-500/0 rounded-2xl blur opacity-0 group-hover:from-purple-500/30 group-hover:to-pink-500/30 group-hover:opacity-100 transition duration-700"></div>
+              <div class="relative h-full bg-gray-900/80 backdrop-blur-xl rounded-2xl p-6 lg:p-8 border border-gray-700/50 
+                          group-hover:border-purple-500/50 transition-all duration-500">
+                <div class="text-center mb-8">
+                  <div class="w-16 h-16 bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700/50 rounded-2xl 
+                              flex items-center justify-center mx-auto mb-4 group-hover:rotate-6 group-hover:scale-110 transition-transform duration-500 shadow-xl">
+                    <Wrench class="w-8 h-8 text-purple-400" />
                   </div>
-                  <h4 class="text-xs sm:text-sm font-semibold text-white mb-0.5">Tools & Technologies</h4>
-                  <p class="text-gray-400 text-xs">Modern development tools and workflows</p>
+                  <h4 class="text-lg font-bold text-white tracking-wide mb-2">Tools & Tech</h4>
+                  <p class="text-gray-400 text-sm">Modern workflows and deployments</p>
                 </div>
                 
-                <div class="space-y-1">
-                  <div class="flex items-center justify-between text-xs">
-                    <span class="text-gray-300">Git/GitHub</span>
-                    <div class="flex space-x-0.5">
-                      <div class="w-0.5 h-0.5 sm:w-1 sm:h-1 bg-primary-500 rounded-full"></div>
-                      <div class="w-0.5 h-0.5 sm:w-1 sm:h-1 bg-primary-500 rounded-full"></div>
-                      <div class="w-0.5 h-0.5 sm:w-1 sm:h-1 bg-primary-500 rounded-full"></div>
-                      <div class="w-0.5 h-0.5 sm:w-1 sm:h-1 bg-primary-500 rounded-full"></div>
-                      <div class="w-0.5 h-0.5 sm:w-1 sm:h-1 bg-primary-500 rounded-full"></div>
-                    </div>
+                <div class="space-y-5">
+                  <div class="skill-progress">
+                    <div class="flex justify-between text-sm mb-1.5"><span class="text-gray-200 font-medium">Git/GitHub</span><span class="text-purple-400">95%</span></div>
+                    <div class="w-full bg-gray-800 rounded-full h-1.5 overflow-hidden"><div class="bg-gradient-to-r from-purple-600 to-pink-400 h-1.5 rounded-full w-[95%] shadow-[0_0_10px_rgba(232,121,249,0.5)]"></div></div>
                   </div>
-                  <div class="flex items-center justify-between text-xs">
-                    <span class="text-gray-300">Docker</span>
-                    <div class="flex space-x-0.5">
-                      <div class="w-0.5 h-0.5 sm:w-1 sm:h-1 bg-primary-500 rounded-full"></div>
-                      <div class="w-0.5 h-0.5 sm:w-1 sm:h-1 bg-primary-500 rounded-full"></div>
-                      <div class="w-0.5 h-0.5 sm:w-1 sm:h-1 bg-primary-500 rounded-full"></div>
-                      <div class="w-0.5 h-0.5 sm:w-1 sm:h-1 bg-gray-600 rounded-full"></div>
-                      <div class="w-0.5 h-0.5 sm:w-1 sm:h-1 bg-gray-600 rounded-full"></div>
-                    </div>
+                  <div class="skill-progress">
+                    <div class="flex justify-between text-sm mb-1.5"><span class="text-gray-200 font-medium">Docker</span><span class="text-purple-400">70%</span></div>
+                    <div class="w-full bg-gray-800 rounded-full h-1.5 overflow-hidden"><div class="bg-gradient-to-r from-purple-600 to-pink-400 h-1.5 rounded-full w-[70%] shadow-[0_0_10px_rgba(232,121,249,0.5)]"></div></div>
                   </div>
-                  <div class="flex items-center justify-between text-xs">
-                    <span class="text-gray-300">VS Code</span>
-                    <div class="flex space-x-0.5">
-                      <div class="w-0.5 h-0.5 sm:w-1 sm:h-1 bg-primary-500 rounded-full"></div>
-                      <div class="w-0.5 h-0.5 sm:w-1 sm:h-1 bg-primary-500 rounded-full"></div>
-                      <div class="w-0.5 h-0.5 sm:w-1 sm:h-1 bg-primary-500 rounded-full"></div>
-                      <div class="w-0.5 h-0.5 sm:w-1 sm:h-1 bg-primary-500 rounded-full"></div>
-                      <div class="w-0.5 h-0.5 sm:w-1 sm:h-1 bg-primary-500 rounded-full"></div>
-                    </div>
+                  <div class="skill-progress">
+                    <div class="flex justify-between text-sm mb-1.5"><span class="text-gray-200 font-medium">VS Code</span><span class="text-purple-400">95%</span></div>
+                    <div class="w-full bg-gray-800 rounded-full h-1.5 overflow-hidden"><div class="bg-gradient-to-r from-purple-600 to-pink-400 h-1.5 rounded-full w-[95%] shadow-[0_0_10px_rgba(232,121,249,0.5)]"></div></div>
                   </div>
                 </div>
               </div>
@@ -325,15 +253,9 @@ const getSkillBarClass = (color) => {
   animation: shimmer 2s infinite;
 }
 
-.skill-circle {
+.skill-card {
   opacity: 0;
   transform: translateY(20px);
-  animation: fadeInUp 0.6s ease-out forwards;
-}
-
-.skill-card-mobile {
-  opacity: 0;
-  transform: translateY(20px) scale(0.95);
   animation: fadeInUp 0.6s ease-out forwards;
 }
 
