@@ -16,6 +16,8 @@ import hotelImage from '@/assets/images/hotel.png'
 import lmsImage from '@/assets/images/lms.png'
 import bankingImage from '@/assets/images/banking.jpeg'
 import majiSalamaImage from '@/assets/images/majisalama.png'
+import orderImage from '@/assets/images/order.png'
+import charityImage from '@/assets/images/charity.png'
 
 // Fallback paths for local development
 const getImagePath = (importedImage, fallbackPath) => {
@@ -73,7 +75,7 @@ export const usePortfolioStore = defineStore('portfolio', () => {
       technologies: ['Spring Boot', 'React.js', 'MySQL', 'Tailwind CSS'],
       category: 'web',
       demoUrl: '#',
-      githubUrl: '#',
+      githubUrl: 'https://github.com/APKnation/furniture',
       featured: true
     },
     {
@@ -84,7 +86,7 @@ export const usePortfolioStore = defineStore('portfolio', () => {
       technologies: ['Vue.js', 'Django', 'PostgreSQL', 'Tailwind CSS'],
       category: 'web',
       demoUrl: '#',
-      githubUrl: '#',
+      githubUrl: 'https://github.com/APKnation/kazihub',
       featured: true
     },
     {
@@ -95,7 +97,7 @@ export const usePortfolioStore = defineStore('portfolio', () => {
       technologies: ['React.js', 'Tailwind CSS', 'SQLite', 'Node.js'],
       category: 'web',
       demoUrl: '#',
-      githubUrl: '#',
+      githubUrl: 'https://github.com/APKnation/demo-ecommerce-with-vue',
       featured: true
     },
     {
@@ -117,7 +119,7 @@ export const usePortfolioStore = defineStore('portfolio', () => {
       technologies: ['HTML', 'Tailwind CSS', 'Vue.js', 'SQLite'],
       category: 'web',
       demoUrl: '#',
-      githubUrl: '#',
+      githubUrl: 'https://github.com/APKnation/angular_todo-app',
       featured: true
     },
     {
@@ -128,7 +130,7 @@ export const usePortfolioStore = defineStore('portfolio', () => {
       technologies: ['Django', 'React.js', 'SQLite', 'Tailwind CSS'],
       category: 'web',
       demoUrl: '#',
-      githubUrl: '#',
+      githubUrl: 'https://github.com/APKnation/agriMarket',
       featured: true
     },
     {
@@ -139,7 +141,7 @@ export const usePortfolioStore = defineStore('portfolio', () => {
       technologies: ['Vue.js', 'SQLite', 'Tailwind CSS', 'HTML'],
       category: 'mobile',
       demoUrl: '#',
-      githubUrl: '#',
+      githubUrl: 'https://github.com/APKnation/timber-app',
       featured: true
     },
     {
@@ -150,7 +152,7 @@ export const usePortfolioStore = defineStore('portfolio', () => {
       technologies: ['Django', 'Vue.js', 'SQLite', 'Tailwind CSS'],
       category: 'web',
       demoUrl: '#',
-      githubUrl: '#',
+      githubUrl: 'https://github.com/APKnation/mkalala-sec',
       featured: true
     },
     {
@@ -161,7 +163,7 @@ export const usePortfolioStore = defineStore('portfolio', () => {
       technologies: ['React.js', 'HTML', 'Tailwind CSS', 'SQLite'],
       category: 'web',
       demoUrl: '#',
-      githubUrl: '#',
+      githubUrl: 'https://github.com/APKnation/weather-api',
       featured: true
     },
     {
@@ -172,7 +174,7 @@ export const usePortfolioStore = defineStore('portfolio', () => {
       technologies: ['Vue.js', 'Django', 'SQLite', 'Tailwind CSS'],
       category: 'web',
       demoUrl: '#',
-      githubUrl: '#',
+      githubUrl: 'https://github.com/APKnation/movie-app-with-react',
       featured: true
     },
     {
@@ -183,7 +185,7 @@ export const usePortfolioStore = defineStore('portfolio', () => {
       technologies: ['React.js', 'Django', 'SQLite', 'Tailwind CSS'],
       category: 'web',
       demoUrl: '#',
-      githubUrl: '#',
+      githubUrl: 'https://github.com/APKnation/LMS-django-react',
       featured: true
     },
     {
@@ -194,7 +196,7 @@ export const usePortfolioStore = defineStore('portfolio', () => {
       technologies: ['Vue.js', 'HTML', 'SQLite', 'Tailwind CSS'],
       category: 'web',
       demoUrl: '#',
-      githubUrl: '#',
+      githubUrl: 'https://github.com/APKnation/hotel-management-sytem',
       featured: true
     },
     {
@@ -216,7 +218,29 @@ export const usePortfolioStore = defineStore('portfolio', () => {
       technologies: ['Vue.js', 'Django', 'PostgreSQL', 'Tailwind CSS'],
       category: 'web',
       demoUrl: '#',
-      githubUrl: '#',
+      githubUrl: 'https://github.com/APKnation/majisalama',
+      featured: true
+    },
+    {
+      id: 15,
+      title: 'Cafe Ordering System',
+      description: 'A comprehensive management system for cafe ordering, tracking tables, and processing payments efficiently.',
+      image: getImagePath(orderImage, '/src/assets/images/order.png'),
+      technologies: ['Vue.js', 'Tailwind CSS', 'Django', 'SQLite'],
+      category: 'web',
+      demoUrl: '#',
+      githubUrl: 'https://github.com/APKnation/cafe-ordering-MS',
+      featured: true
+    },
+    {
+      id: 16,
+      title: 'Charity Management Platform',
+      description: 'A platform to facilitate and manage charitable donations, volunteers, and campaigns.',
+      image: getImagePath(charityImage, '/src/assets/images/charity.png'),
+      technologies: ['Vue.js', 'Tailwind CSS', 'Django', 'SQLite'],
+      category: 'web',
+      demoUrl: '#',
+      githubUrl: 'https://github.com/APKnation/charity',
       featured: true
     }
   ])

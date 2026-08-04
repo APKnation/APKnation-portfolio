@@ -68,17 +68,7 @@
                          group-hover:opacity-100 transition-all duration-500 transform 
                          translate-y-4 group-hover:translate-y-0">
               <div class="flex space-x-3">
-                <a 
-                  :href="project.demoUrl" 
-                  class="bg-primary-600 hover:bg-primary-700 text-white p-3 rounded-full 
-                         transition-all duration-300 transform hover:scale-110 hover:rotate-12 
-                         shadow-lg hover:shadow-primary-500/50"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  :aria-label="`View live demo of ${project.title}`"
-                >
-                  <ExternalLink class="w-5 h-5" />
-                </a>
+
                 <a 
                   :href="project.githubUrl" 
                   class="bg-gray-700 hover:bg-gray-600 text-white p-3 rounded-full 
@@ -141,32 +131,17 @@
             </div>
 
             <!-- Action Links with Enhanced Hover -->
-            <div class="flex space-x-3 items-center">
-              <a 
-                :href="project.demoUrl" 
-                class="text-primary-400 hover:text-primary-300 font-medium text-xs sm:text-base 
-                       transition-all duration-300 hover:scale-110 flex items-center space-x-1 
-                       group"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <span>View Demo</span>
-                <ArrowUpRight class="w-3 h-3 opacity-0 group-hover:opacity-100 
-                                transition-all duration-300 transform group-hover:translate-x-1 
-                                group-hover:-translate-y-1" />
-              </a>
+            <div class="flex flex-col sm:flex-row gap-3 items-center mt-2 w-full">
               <a 
                 :href="project.githubUrl" 
-                class="text-gray-400 hover:text-gray-300 font-medium text-xs sm:text-base 
-                       transition-all duration-300 hover:scale-110 flex items-center space-x-1 
-                       group"
+                class="w-full bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded-lg 
+                       font-medium text-sm transition-all duration-300 
+                       flex items-center justify-center space-x-2 group shadow-lg border border-gray-700 hover:border-gray-600"
                 target="_blank"
                 rel="noopener noreferrer"
               >
+                <Github class="w-4 h-4 group-hover:scale-110 transition-transform" />
                 <span>Source Code</span>
-                <Github class="w-3 h-3 opacity-0 group-hover:opacity-100 
-                           transition-all duration-300 transform group-hover:translate-x-1 
-                           group-hover:-translate-y-1" />
               </a>
             </div>
 
