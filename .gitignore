@@ -1,0 +1,5 @@
+
+# Local env files (secrets)
+.env
+backend/.env
+frontend/.env

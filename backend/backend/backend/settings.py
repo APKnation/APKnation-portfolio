@@ -7,6 +7,14 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# Load local env files if present (no-op if python-dotenv not installed)
+try:
+    from dotenv import load_dotenv
+    for _env in (BASE_DIR.parent / '.env', BASE_DIR / '.env'):
+        load_dotenv(_env, override=False)
+except Exception:
+    pass
+
 SECRET_KEY = os.environ.get(
     'DJANGO_SECRET_KEY',
     'django-insecure-663!2b$b9tvm&8ad7yu^y^9qrhsmy+*p#(1+yp0$49l8bit%ai',
@@ -29,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'corsheaders',
     'graphene_django',
+    'portfolio',
 ]
 
 MIDDLEWARE = [
@@ -67,7 +76,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': os.environ.get('POSTGRES_DB', 'portfolio'),
         'USER': os.environ.get('POSTGRES_USER', 'postgres'),
-        'PASSWORD': os.environ.get('POSTGRES_PASSWORD', 'postgres'),
+        'PASSWORD': os.environ.get('POSTGRES_PASSWORD', 'Kafuka2004!'),
         'HOST': os.environ.get('POSTGRES_HOST', 'localhost'),
         'PORT': os.environ.get('POSTGRES_PORT', '5432'),
     }
