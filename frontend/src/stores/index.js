@@ -111,8 +111,13 @@ export const usePortfolioStore = defineStore('portfolio', () => {
       })
       if (!res.ok) throw new Error(`API error: ${res.status}`)
       const json = await res.json()
-      if (json.errors?.length) throw new Error(json.errors[0].message || 'GraphQL error')
       const data = json.data || {}
+      const hasData = Boolean(data.profile) || Array.isArray(data.skills)
+      if (json.errors?.length) {
+        // Do not blank the whole site because one field failed: keep the data we got.
+        console.warn('GraphQL returned errors:', json.errors)
+        if (!hasData) throw new Error(json.errors[0].message || 'GraphQL error')
+      }
       if (data.profile) {
         profile.value = data.profile
         // keep contact in sync with profile

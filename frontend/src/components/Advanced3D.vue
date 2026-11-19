@@ -151,7 +151,7 @@ const generateCubes = () => {
       rotateX: Math.random() * 360,
       rotateY: Math.random() * 360,
       rotateZ: Math.random() * 360,
-      color: `hsl(${Math.random() * 60 + 180}, 70%, 50%)`
+      color: ['#0d3b66', '#faf0ca', '#a1c181'][Math.floor(Math.random() * 3)]
     })
   }
   
@@ -173,7 +173,7 @@ const generatePyramids = () => {
       duration: Math.random() * 12 + 18,
       rotateX: Math.random() * 180,
       rotateY: Math.random() * 360,
-      color: `hsl(${Math.random() * 60 + 280}, 70%, 50%)`
+      color: ['#0d3b66', '#faf0ca', '#a1c181'][Math.floor(Math.random() * 3)]
     })
   }
   
@@ -193,7 +193,7 @@ const generateParticles = () => {
       size: Math.random() * 8 + 4,
       delay: Math.random() * 3,
       duration: Math.random() * 8 + 12,
-      color: `hsl(${Math.random() * 60 + 160}, 80%, 60%)`
+      color: ['#0d3b66', '#faf0ca', '#a1c181'][Math.floor(Math.random() * 3)]
     })
   }
   
@@ -215,7 +215,7 @@ const generateLightBeams = () => {
       delay: Math.random() * 4,
       duration: Math.random() * 10 + 20,
       rotation: Math.random() * 360,
-      color: `hsl(${Math.random() * 60 + 200}, 100%, 50%)`
+      color: ['#0d3b66', '#faf0ca', '#a1c181'][Math.floor(Math.random() * 3)]
     })
   }
   
@@ -283,8 +283,8 @@ const generateCodeMatrix = () => {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, rgba(0, 255, 255, 0.3), rgba(0, 100, 255, 0.2));
-  border: 1px solid rgba(0, 255, 255, 0.5);
+  background: linear-gradient(135deg, rgba(161, 193, 129, 0.3), rgba(13, 59, 102, 0.2));
+  border: 1px solid rgba(161, 193, 129, 0.5);
   backdrop-filter: blur(10px);
 }
 
@@ -302,7 +302,7 @@ const generateCodeMatrix = () => {
   height: 0;
   border-left: calc(var(--size) / 2) solid transparent;
   border-right: calc(var(--size) / 2) solid transparent;
-  border-bottom: var(--size) solid rgba(255, 0, 255, 0.3);
+  border-bottom: var(--size) solid rgba(250, 240, 202, 0.3);
   transform-style: preserve-3d;
   animation: pyramid-float var(--animation-duration) infinite linear;
   opacity: 0.7;
@@ -314,7 +314,7 @@ const generateCodeMatrix = () => {
   height: 0;
   border-left: calc(var(--size) / 2) solid transparent;
   border-right: calc(var(--size) / 2) solid transparent;
-  border-bottom: var(--size) solid rgba(255, 0, 255, 0.5);
+  border-bottom: var(--size) solid rgba(250, 240, 202, 0.5);
   transform: translateZ(calc(var(--size) / 3));
 }
 
@@ -498,7 +498,7 @@ const generateCodeMatrix = () => {
   position: absolute;
   width: 100%;
   height: 2px;
-  background: linear-gradient(90deg, transparent, #00ffff, transparent);
+  background: linear-gradient(90deg, transparent, #a1c181, transparent);
 }
 
 .axis-x { transform: rotateY(90deg); }

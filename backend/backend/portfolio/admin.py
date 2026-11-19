@@ -16,10 +16,27 @@ class ProfileAdmin(admin.ModelAdmin):
 
 @admin.register(Project)
 class ProjectAdmin(admin.ModelAdmin):
-    list_display = ('title', 'category', 'featured', 'sort_order')
+    list_display = ('title', 'category', 'image_tag', 'featured', 'sort_order')
     list_filter = ('category', 'featured')
     search_fields = ('title', 'description')
     ordering = ('sort_order', 'id')
+    readonly_fields = ('image_tag',)
+
+    def image_tag(self, obj):
+        if obj.image:
+            try:
+                if not obj.image.storage.exists(obj.image.name):
+                    return obj.image.name
+            except Exception:
+                return '-'
+            return format_html(
+                '<img src="{}" width="90" height="60" '
+                'style="object-fit:cover;border-radius:6px;background:#0d3b66;" />',
+                obj.image.url,
+            )
+        return '-'
+
+    image_tag.short_description = 'Image'
 
 
 class SkillTopicInline(admin.TabularInline):

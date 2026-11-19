@@ -1,9 +1,12 @@
 <template>
-  <nav class="fixed top-0 left-0 w-full bg-gray-900/95 backdrop-blur-lg shadow-2xl z-40
-               border-b border-gradient-to-r from-primary-500/30 via-secondary-500/30 to-indigo-500/30
-               transition-all duration-300">
+  <nav
+    class="fixed top-0 left-0 w-full backdrop-blur-lg shadow-2xl z-40
+           border-b border-gradient-to-r from-primary-500/30 via-secondary-500/30 to-indigo-500/30
+           transition-all duration-500"
+    :class="scrolled ? 'bg-gray-900/80 shadow-primary-950/40' : 'bg-gray-900/95'"
+  >
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between items-center h-16">
+      <div class="flex justify-between items-center transition-all duration-500" :class="scrolled ? 'h-14' : 'h-16'">
         <!-- Logo -->
         <div class="flex-shrink-0 flex items-center">
           <router-link to="/" class="text-xl font-bold text-white hover:text-primary-300
@@ -148,7 +151,7 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { Menu, X, Github, Instagram, MessageCircle } from 'lucide-vue-next'
 import { usePortfolioStore } from '@/stores/index'
@@ -157,6 +160,18 @@ const route = useRoute()
 const portfolioStore = usePortfolioStore()
 const profile = computed(() => portfolioStore.profile)
 const isMobileMenuOpen = ref(false)
+const scrolled = ref(false)
+
+const onScroll = () => {
+  scrolled.value = window.scrollY > 24
+}
+
+onMounted(() => {
+  onScroll()
+  window.addEventListener('scroll', onScroll, { passive: true })
+})
+
+onUnmounted(() => window.removeEventListener('scroll', onScroll))
 
 const adminUrl = (import.meta.env.VITE_BACKEND_URL || 'http://127.0.0.1:8000').replace(/\/$/, '') + '/admin/'
 
@@ -177,3 +192,27 @@ const closeMobileMenu = () => {
   isMobileMenuOpen.value = false
 }
 </script>
+
+<style scoped>
+.nav-link {
+  position: relative;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 3px;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #a1c181, #faf0ca);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-link:not(.router-link-active):hover::after {
+  transform: scaleX(1);
+}
+</style>

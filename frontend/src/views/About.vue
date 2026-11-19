@@ -2,7 +2,7 @@
   <section id="about" class="py-6 sm:py-16 px-4 text-white dark:text-gray-100">
     <div class="max-w-7xl mx-auto">
       <transition appear name="fade">
-        <h2 class="text-3xl sm:text-4xl font-bold text-center mb-12 sm:mb-16 text-white dark:text-gray-100">
+        <h2 v-reveal class="text-3xl sm:text-4xl font-bold text-center mb-12 sm:mb-16 text-white dark:text-gray-100">
           About Me
         </h2>
       </transition>
@@ -10,7 +10,7 @@
       <div class="flex flex-col lg:flex-row items-center gap-8 sm:gap-12">
         <!-- Information Card -->
         <transition appear name="slide-in-left">
-          <div class="lg:w-1/3 flex justify-center">
+          <div v-reveal.left class="lg:w-1/3 flex justify-center">
             <div class="relative group cursor-pointer w-full max-w-sm">
               <!-- Card Background Layers -->
               <div class="absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl
@@ -60,24 +60,24 @@
                   <div class="grid grid-cols-3 gap-2 sm:gap-3 mb-4 sm:mb-6">
                     <div class="text-center transform transition-all duration-500
                                group-hover:translate-y-[-2px]">
-                      <div class="text-lg sm:text-xl lg:text-2xl font-bold text-cyan-400">{{ profile.yearsExperience }}</div>
+                      <div class="text-lg sm:text-xl lg:text-2xl font-bold text-cyan-400"><AnimatedNumber :value="profile.yearsExperience" /></div>
                       <div class="text-xs text-gray-400">Years</div>
                     </div>
                     <div class="text-center transform transition-all duration-500
                                group-hover:translate-y-[-2px] delay-75">
-                      <div class="text-lg sm:text-xl lg:text-2xl font-bold text-purple-400">{{ profile.projectsCount }}</div>
+                      <div class="text-lg sm:text-xl lg:text-2xl font-bold text-purple-400"><AnimatedNumber :value="profile.projectsCount" /></div>
                       <div class="text-xs text-gray-400">Projects</div>
                     </div>
                     <div class="text-center transform transition-all duration-500
                                group-hover:translate-y-[-2px] delay-150">
-                      <div class="text-lg sm:text-xl lg:text-2xl font-bold text-green-400">{{ profile.skillsCount }}</div>
+                      <div class="text-lg sm:text-xl lg:text-2xl font-bold text-green-400"><AnimatedNumber :value="profile.skillsCount" /></div>
                       <div class="text-xs text-gray-400">Skills</div>
                     </div>
                   </div>
 
                   <!-- Key Information -->
                   <div class="space-y-2 sm:space-y-4">
-                    <div class="flex items-center space-x-2 sm:space-x-3 opacity-0 group-hover:opacity-100
+                    <div class="flex items-center space-x-2 sm:space-x-3 opacity-100
                                 transition-opacity duration-300">
                       <div class="w-6 h-6 sm:w-8 sm:h-8 bg-cyan-600/20 rounded-full flex items-center justify-center">
                         <span class="text-cyan-400 text-xs sm:text-sm">🎓</span>
@@ -88,7 +88,7 @@
                       </div>
                     </div>
 
-                    <div class="flex items-center space-x-2 sm:space-x-3 opacity-0 group-hover:opacity-100
+                    <div class="flex items-center space-x-2 sm:space-x-3 opacity-100
                                 transition-opacity duration-300 delay-75">
                       <div class="w-6 h-6 sm:w-8 sm:h-8 bg-purple-600/20 rounded-full flex items-center justify-center">
                         <span class="text-purple-400 text-xs sm:text-sm">💼</span>
@@ -99,7 +99,7 @@
                       </div>
                     </div>
 
-                    <div class="flex items-center space-x-2 sm:space-x-3 opacity-0 group-hover:opacity-100
+                    <div class="flex items-center space-x-2 sm:space-x-3 opacity-100
                                 transition-opacity duration-300 delay-150">
                       <div class="w-6 h-6 sm:w-8 sm:h-8 bg-green-600/20 rounded-full flex items-center justify-center">
                         <span class="text-green-400 text-xs sm:text-sm">🚀</span>
@@ -113,7 +113,7 @@
 
                   <!-- Summary Section -->
                   <div class="mt-3 sm:mt-6 p-2 sm:p-4 bg-gray-700/30 rounded-lg border border-gray-600/30
-                              opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200 max-h-24 sm:max-h-none overflow-hidden">
+                              opacity-100 transition-opacity duration-500 delay-200 max-h-24 sm:max-h-none overflow-hidden">
                     <h4 class="text-white text-xs sm:text-sm font-semibold mb-1 sm:mb-2 flex items-center">
                       <span class="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-cyan-400 rounded-full mr-1 sm:mr-2 animate-pulse"></span>
                       Professional Summary
@@ -124,7 +124,7 @@
                   </div>
 
                   <!-- Core Values -->
-                  <div class="mt-2 sm:mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-300 max-h-16 sm:max-h-none overflow-hidden">
+                  <div class="mt-2 sm:mt-4 opacity-100 transition-opacity duration-500 delay-300 max-h-16 sm:max-h-none overflow-hidden">
                     <h4 class="text-white text-xs sm:text-sm font-semibold mb-2 sm:mb-3">Core Values</h4>
                     <div class="flex flex-wrap gap-1 sm:gap-2">
                       <span
@@ -137,7 +137,7 @@
                   </div>
 
                   <!-- Contact Button -->
-                  <div class="mt-3 sm:mt-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  <div class="mt-3 sm:mt-6 opacity-100 transition-opacity duration-500">
                     <router-link to="/contact" class="block w-full text-center bg-gradient-to-r from-cyan-600 to-purple-600 text-white
                                  py-1.5 sm:py-2 px-2 sm:px-4 rounded-lg font-medium text-sm
                                  hover:from-cyan-500 hover:to-purple-500
@@ -150,16 +150,16 @@
 
               <!-- Floating Particles -->
               <div class="absolute -top-2 -right-2 w-4 h-4 sm:w-6 sm:h-6 bg-cyan-400/30 rounded-full
-                           animate-pulse opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                           animate-pulse opacity-100 transition-opacity duration-300"></div>
               <div class="absolute -bottom-2 -left-2 w-3 h-3 sm:w-4 sm:h-4 bg-purple-400/30 rounded-full
-                           animate-pulse delay-75 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                           animate-pulse delay-75 opacity-100 transition-opacity duration-300"></div>
             </div>
           </div>
         </transition>
 
         <!-- Content with Advanced Card -->
         <transition appear name="slide-in-right">
-          <div class="lg:w-2/3">
+          <div v-reveal.right="120" class="lg:w-2/3">
             <div class="bg-gray-800/90 backdrop-blur-sm rounded-2xl p-6 sm:p-8
                        border border-gray-700/50 shadow-xl hover:shadow-2xl
                        transition-all duration-500 hover:border-gray-600/50">
@@ -264,6 +264,7 @@
 <script setup>
 import { computed } from 'vue'
 import { MapPin, Mail, Phone, Download } from 'lucide-vue-next'
+import AnimatedNumber from '@/components/AnimatedNumber.vue'
 import { usePortfolioStore } from '@/stores/index'
 
 const portfolioStore = usePortfolioStore()

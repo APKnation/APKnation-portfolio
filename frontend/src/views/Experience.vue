@@ -2,7 +2,7 @@
   <section id="experience" class="py-6 sm:py-16 px-4 text-white dark:text-gray-100 relative z-10">
     <div class="max-w-7xl mx-auto">
       <transition appear name="fade">
-        <h2 class="text-xl sm:text-2xl md:text-3xl font-bold text-center mb-3 sm:mb-4 md:mb-6 text-white dark:text-gray-100">
+        <h2 v-reveal class="text-xl sm:text-2xl md:text-3xl font-bold text-center mb-3 sm:mb-4 md:mb-6 text-white dark:text-gray-100">
           Experience & Education
         </h2>
       </transition>
@@ -11,7 +11,7 @@
         <!-- Professional Journey -->
         <div>
           <transition appear name="slide-up">
-            <h3 class="text-base sm:text-lg md:text-xl font-semibold mb-2 sm:mb-3 md:mb-4 text-center text-white">
+            <h3 v-reveal class="text-base sm:text-lg md:text-xl font-semibold mb-2 sm:mb-3 md:mb-4 text-center text-white">
               Professional Journey
             </h3>
           </transition>
@@ -20,12 +20,12 @@
             scalable applications, leading development teams, and implementing industry best practices.
           </p>
           
-          <div class="max-w-4xl mx-auto space-y-3 sm:space-y-4">
+          <div class="max-w-4xl mx-auto space-y-3 sm:space-y-4 relative timeline">
             <div
               v-for="(job, index) in experiences"
               :key="job.id"
+              v-reveal="index * 90"
               class="experience-card group"
-              :style="{ transitionDelay: `${index * 100}ms` }"
             >
               <div class="bg-gray-800/50 backdrop-blur-sm rounded-lg p-3 sm:p-4 border border-gray-700/50 
                          hover:border-primary-500/50 transition-all duration-500 transform 
@@ -89,7 +89,7 @@
         <!-- Academic Background -->
         <div>
           <transition appear name="slide-up">
-            <h3 class="text-base sm:text-lg md:text-xl font-semibold mb-2 sm:mb-3 md:mb-4 text-center text-white">
+            <h3 v-reveal class="text-base sm:text-lg md:text-xl font-semibold mb-2 sm:mb-3 md:mb-4 text-center text-white">
               Academic Foundation
             </h3>
           </transition>
@@ -98,12 +98,12 @@
             and practical skills that complement my professional experience.
           </p>
           
-          <div class="max-w-4xl mx-auto space-y-3 sm:space-y-4">
+          <div class="max-w-4xl mx-auto space-y-3 sm:space-y-4 relative timeline">
             <div
               v-for="(edu, index) in education"
               :key="edu.id"
+              v-reveal="index * 90"
               class="education-card group"
-              :style="{ transitionDelay: `${index * 100}ms` }"
             >
               <div class="bg-gray-800/50 backdrop-blur-sm rounded-lg p-3 sm:p-4 border border-gray-700/50 
                          hover:border-primary-500/50 transition-all duration-500 transform 
@@ -174,17 +174,26 @@ const education = computed(() => portfolioStore.education)
 </script>
 
 <style scoped>
-.experience-card,
-.education-card {
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeInUp 0.6s ease-out forwards;
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: -14px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  border-radius: 999px;
+  background: linear-gradient(to bottom, transparent, rgba(161, 193, 129, 0.55), rgba(250, 240, 202, 0.3), transparent);
+  animation: timeline-glow 4s ease-in-out infinite;
 }
 
-@keyframes fadeInUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
+@media (max-width: 640px) {
+  .timeline::before {
+    display: none;
   }
+}
+
+@keyframes timeline-glow {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
 }
 </style>

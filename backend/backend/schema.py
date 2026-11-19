@@ -16,6 +16,17 @@ from portfolio.models import Project as ProjectModel
 from portfolio.models import Skill as SkillModel
 
 
+def _as_string_list(value):
+    """Make a GraphQL List(String) field safe even if the DB has a scalar/dict."""
+    if value is None or value == '':
+        return []
+    if isinstance(value, (list, tuple)):
+        return [str(item) for item in value if item is not None]
+    if isinstance(value, dict):
+        return [f'{key}: {val}' for key, val in value.items()]
+    return [str(value)]
+
+
 class ProjectType(ObjectType):
     id = Int()
     title = String()
@@ -26,6 +37,22 @@ class ProjectType(ObjectType):
     demoUrl = String()
     githubUrl = String()
     featured = Boolean()
+
+    def resolve_technologies(self, info):
+        return _as_string_list(getattr(self, 'technologies', None))
+
+    def resolve_image(self, info):
+        """Full URL for uploaded images; keep legacy asset filenames as-is."""
+        if not self.image:
+            return ''
+        try:
+            name = self.image.name
+            if self.image.storage.exists(name):
+                return info.context.build_absolute_uri(self.image.url)
+            # Legacy value such as 'ecommerce.png' handled by the frontend image map.
+            return name
+        except Exception:
+            return getattr(self, 'image', '') or ''
 
     def resolve_demoUrl(self, info):
         return getattr(self, 'demo_url', None) or getattr(self, 'demoUrl', '#')
@@ -76,6 +103,12 @@ class ExperienceType(ObjectType):
     technologies = List(String)
     achievements = List(String)
 
+    def resolve_technologies(self, info):
+        return _as_string_list(getattr(self, 'technologies', None))
+
+    def resolve_achievements(self, info):
+        return _as_string_list(getattr(self, 'achievements', None))
+
 
 class EducationType(ObjectType):
     id = Int()
@@ -86,6 +119,9 @@ class EducationType(ObjectType):
     status = String()
     description = String()
     coursework = List(String)
+
+    def resolve_coursework(self, info):
+        return _as_string_list(getattr(self, 'coursework', None))
 
 
 class ContactType(ObjectType):

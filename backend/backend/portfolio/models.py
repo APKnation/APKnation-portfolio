@@ -41,7 +41,12 @@ class Project(models.Model):
     CATEGORY_CHOICES = [('web', 'Web'), ('mobile', 'Mobile'), ('design', 'Design')]
     title = models.CharField(max_length=200)
     description = models.TextField(blank=True, default='')
-    image = models.CharField(max_length=200, blank=True, default='', help_text='Filename in frontend assets/images, e.g. ecommerce.png')
+    image = models.ImageField(
+        upload_to='projects/',
+        blank=True,
+        null=True,
+        help_text='Upload the project screenshot/cover image (PNG, JPG or WebP).',
+    )
     technologies = models.JSONField(default=list, blank=True)
     category = models.CharField(max_length=20, choices=CATEGORY_CHOICES, default='web')
     demo_url = models.CharField(max_length=500, blank=True, default='#')

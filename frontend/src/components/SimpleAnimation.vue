@@ -105,7 +105,7 @@ onMounted(() => {
 
 const generateLightDots = () => {
   const dotCount = 8
-  const colors = ['#61dafb', '#a855f7', '#06b6d4', '#10b981', '#6366f1']
+  const colors = ['#faf0ca', '#a1c181', '#0d3b66']
   const generatedDots = []
   
   for (let i = 0; i < dotCount; i++) {
@@ -125,7 +125,7 @@ const generateLightDots = () => {
 
 const generateMovingLines = () => {
   const lineCount = 5
-  const colors = ['#61dafb', '#a855f7', '#06b6d4', '#10b981', '#6366f1']
+  const colors = ['#faf0ca', '#a1c181', '#0d3b66']
   const generatedLines = []
   
   for (let i = 0; i < lineCount; i++) {
@@ -146,7 +146,7 @@ const generateMovingLines = () => {
 
 const generateFloatingCircles = () => {
   const circleCount = 6
-  const colors = ['#61dafb', '#a855f7', '#06b6d4', '#10b981', '#6366f1']
+  const colors = ['#faf0ca', '#a1c181', '#0d3b66']
   const generatedCircles = []
   
   for (let i = 0; i < circleCount; i++) {
@@ -166,7 +166,7 @@ const generateFloatingCircles = () => {
 
 const generateRandomParticles = () => {
   const particleCount = 10
-  const colors = ['#61dafb', '#a855f7', '#06b6d4', '#10b981', '#6366f1']
+  const colors = ['#faf0ca', '#a1c181', '#0d3b66']
   const generatedParticles = []
   
   for (let i = 0; i < particleCount; i++) {
@@ -186,7 +186,7 @@ const generateRandomParticles = () => {
 
 const generateMovingTriangles = () => {
   const triangleCount = 4
-  const colors = ['#61dafb', '#a855f7', '#06b6d4', '#10b981', '#6366f1']
+  const colors = ['#faf0ca', '#a1c181', '#0d3b66']
   const generatedTriangles = []
   
   for (let i = 0; i < triangleCount; i++) {

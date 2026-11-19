@@ -1,5 +1,7 @@
 <template>
   <div id="app" :class="{ 'dark': isDarkMode }">
+    <ScrollProgress />
+    <CursorGlow />
     <Navbar />
     <main>
       <router-view v-slot="{ Component, route }">
@@ -28,6 +30,8 @@ import { computed, onMounted } from 'vue'
 import { useThemeStore, usePortfolioStore } from '@/stores/index'
 import Navbar from '@/components/Navbar.vue'
 import Footer from '@/components/Footer.vue'
+import ScrollProgress from '@/components/ScrollProgress.vue'
+import CursorGlow from '@/components/CursorGlow.vue'
 import { Sun, Moon } from 'lucide-vue-next'
 
 const themeStore = useThemeStore()
@@ -50,32 +54,53 @@ onMounted(() => {
 
 <style>
 /* Page transitions */
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.5s ease;
+.fade-enter-active {
+  transition:
+    opacity 0.55s ease,
+    transform 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 0.55s ease;
 }
 
-.fade-enter-from,
+.fade-leave-active {
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease,
+    filter 0.3s ease;
+}
+
+.fade-enter-from {
+  opacity: 0;
+  transform: translateY(18px) scale(0.992);
+  filter: blur(8px);
+}
+
 .fade-leave-to {
   opacity: 0;
+  transform: translateY(-10px) scale(0.996);
+  filter: blur(4px);
 }
 
-.slide-up-enter-active,
+.slide-up-enter-active {
+  transition:
+    opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
 .slide-up-leave-active {
-  transition: all 0.5s ease;
+  transition: all 0.45s ease;
 }
 
 .slide-up-enter-from {
-  transform: translateY(100%);
+  transform: translateY(40px);
   opacity: 0;
 }
 
 .slide-up-leave-to {
-  transform: translateY(-100%);
+  transform: translateY(-20%);
   opacity: 0;
 }
 
-/* AGGRESSIVE Dark Mode Styles */
+/* Single palette: navy #0d3b66, cream #faf0ca, sage #a1c181 */
 .dark {
   color-scheme: dark !important;
 }
@@ -85,79 +110,79 @@ html.dark body,
 html.dark #app,
 .dark #app,
 .dark section {
-  background-color: #000000 !important;
+  background-color: #0d3b66 !important;
 }
 
-.dark .bg-gray-900,
+.dark .bg-gray-900 {
+  background-color: #0a2f53 !important;
+}
+
 .dark .bg-gray-800,
 .dark .bg-gray-700 {
-  background-color: #000000 !important;
+  background-color: #1c4a72 !important;
 }
 
 /* Force text colors */
 html.dark body,
 html.dark #app,
 .dark .text-white {
-  color: #f9fafb !important;
+  color: #faf0ca !important;
 }
 
 .dark .text-gray-100 {
-  color: #f3f4f6 !important;
+  color: #faf0ca !important;
 }
 
 .dark .text-gray-300 {
-  color: #d1d5db !important;
+  color: #d9e8f4 !important;
 }
 
 .dark .text-gray-400 {
-  color: #9ca3af !important;
+  color: #b6cfe3 !important;
 }
 
 .dark .text-gray-500 {
-  color: #6b7280 !important;
+  color: #7e9bb4 !important;
 }
 
-.dark .text-cyan-300 {
-  color: #67e8f9 !important;
-}
-
+.dark .text-cyan-300,
 .dark .text-cyan-400 {
-  color: #22d3ee !important;
+  color: #a1c181 !important;
 }
 
 /* Force card backgrounds */
 .dark .bg-gray-800\/50,
 .dark .bg-gray-700\/30 {
-  background-color: #111827 !important;
+  background-color: #1c4a72 !important;
 }
 
-/* Light mode with highest specificity */
+/* Light mode keeps the same navy/cream/sage palette */
 html:not(.dark) body,
 html:not(.dark) #app,
 :not(.dark) #app,
 :not(.dark) section {
-  background-color: #111827 !important;
+  background-color: #0d3b66 !important;
 }
 
 :not(.dark) .bg-gray-900,
 :not(.dark) .bg-gray-800 {
-  background-color: #111827 !important;
+  background-color: #1c4a72 !important;
 }
 
 :not(.dark) .text-white {
-  color: #ffffff !important;
+  color: #faf0ca !important;
 }
 
 :not(.dark) .text-gray-400 {
-  color: #9ca3af !important;
+  color: #b6cfe3 !important;
 }
 
 :not(.dark) .text-gray-500 {
-  color: #6b7280 !important;
+  color: #7e9bb4 !important;
 }
 
 :not(.dark) .text-cyan-300 {
-  color: #67e8f9 !important;
+  color: #a1c181 !important;
 }
 
 /* Theme button visibility */

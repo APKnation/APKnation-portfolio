@@ -2,7 +2,7 @@
   <section id="skills" class="py-4 sm:py-6 px-4 text-white dark:text-gray-100 bg-gradient-to-br from-purple-900/40 via-blue-900/40 to-indigo-900/40 dark:from-purple-950/50 dark:via-blue-950/50 dark:to-indigo-950/50">
     <div class="max-w-7xl mx-auto">
       <transition appear name="fade">
-        <h2 class="text-xl sm:text-2xl md:text-3xl font-bold text-center mb-3 sm:mb-4 md:mb-6 text-white dark:text-gray-100">
+        <h2 v-reveal class="text-xl sm:text-2xl md:text-3xl font-bold text-center mb-3 sm:mb-4 md:mb-6 text-white dark:text-gray-100">
           My Skills
         </h2>
       </transition>
@@ -11,7 +11,7 @@
         <!-- Technical Skills Overview -->
         <div>
           <transition appear name="slide-up">
-            <h3 class="text-base sm:text-lg md:text-xl font-semibold mb-2 sm:mb-3 md:mb-4 text-center text-white">
+            <h3 v-reveal class="text-base sm:text-lg md:text-xl font-semibold mb-2 sm:mb-3 md:mb-4 text-center text-white">
               Technical Proficiency
             </h3>
           </transition>
@@ -24,9 +24,9 @@
             <div
               v-for="(skill, index) in skills"
               :key="skill.id || skill.name"
+              v-reveal="index * 60"
               class="skill-card group relative p-px rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-500"
               :class="skill.topics?.length ? 'col-span-2' : ''"
-              :style="{ transitionDelay: `${index * 30}ms` }"
             >
               <div class="absolute inset-0 bg-gradient-to-br from-gray-700/50 via-gray-800/50 to-gray-700/50
                           group-hover:from-primary-500 group-hover:via-secondary-500 group-hover:to-primary-500 transition-colors duration-500"></div>
@@ -66,7 +66,7 @@
                     <span class="text-gray-400">{{ skill.level }}%</span>
                   </div>
                   <div class="w-full bg-gray-800 rounded-full h-1.5 overflow-hidden">
-                    <div :class="skillBarClass(skill.color)" class="h-1.5 rounded-full" :style="{ width: `${skill.level}%` }"></div>
+                    <div :class="skillBarClass(skill.color)" class="bar-fill h-1.5 rounded-full" :style="{ '--bar-w': `${skill.level}%` }"></div>
                   </div>
                 </div>
 
@@ -80,7 +80,7 @@
                         <span v-if="topic.percent" class="text-gray-500 ml-2">{{ topic.percent }}%</span>
                       </div>
                       <div v-if="topic.percent" class="w-full bg-gray-800 rounded-full h-1 overflow-hidden">
-                        <div :class="skillBarClass(skill.color)" class="h-1 rounded-full" :style="{ width: `${topic.percent}%` }"></div>
+                        <div :class="skillBarClass(skill.color)" class="bar-fill h-1 rounded-full" :style="{ '--bar-w': `${topic.percent}%` }"></div>
                       </div>
                     </div>
                   </div>
@@ -89,14 +89,14 @@
             </div>
           </div>
           <p v-if="!skills.length" class="text-center text-gray-500 text-sm">
-            No skills yet. Add them from the Django admin.
+            {{ loading ? 'Loading skills…' : (error || 'No skills yet. Add them from the Django admin.') }}
           </p>
         </div>
 
         <!-- Development Methodologies (backend-managed) -->
         <div>
           <transition appear name="slide-up">
-            <h3 class="text-base sm:text-lg md:text-xl font-semibold mb-2 sm:mb-3 md:mb-4 text-center text-white">
+            <h3 v-reveal class="text-base sm:text-lg md:text-xl font-semibold mb-2 sm:mb-3 md:mb-4 text-center text-white">
               Development Approach
             </h3>
           </transition>
@@ -105,6 +105,7 @@
             <div
               v-for="(approach, i) in devApproaches"
               :key="(approach.title || '') + i"
+              v-reveal="i * 100"
               :class="approachCardClass(approach.color)"
               class="group relative bg-gray-800/40 backdrop-blur-lg rounded-2xl p-6 border border-gray-700/50
                      hover:bg-gray-800/60 transition-all duration-500 shadow-lg"
@@ -124,13 +125,13 @@
         <!-- Skill Categories (backend-managed) -->
         <div>
           <transition appear name="slide-up">
-            <h3 class="text-base sm:text-lg md:text-xl font-semibold mb-2 sm:mb-3 md:mb-4 text-center text-white">
+            <h3 v-reveal class="text-base sm:text-lg md:text-xl font-semibold mb-2 sm:mb-3 md:mb-4 text-center text-white">
               Skill Categories
             </h3>
           </transition>
 
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-            <div v-for="(cat, i) in skillCategories" :key="(cat.title || '') + i" class="category-card group relative">
+            <div v-for="(cat, i) in skillCategories" :key="(cat.title || '') + i" v-reveal="i * 100" class="category-card group relative">
               <div :class="categoryGlowOuter(cat.theme)" class="absolute -inset-0.5 rounded-2xl blur opacity-0 group-hover:opacity-100 transition duration-700"></div>
               <div :class="categoryBorderClass(cat.theme)" class="relative h-full bg-gray-900/80 backdrop-blur-xl rounded-2xl p-6 lg:p-8 border border-gray-700/50 transition-all duration-500">
                 <div class="text-center mb-8">
@@ -151,8 +152,8 @@
                     <div class="w-full bg-gray-800 rounded-full h-1.5 overflow-hidden">
                       <div
                         :class="categoryBarClass(cat.theme)"
-                        class="h-1.5 rounded-full"
-                        :style="{ width: `${item.percent}%` }"
+                        class="bar-fill h-1.5 rounded-full"
+                        :style="{ '--bar-w': `${item.percent}%` }"
                       ></div>
                     </div>
                   </div>
@@ -175,6 +176,8 @@ const portfolioStore = usePortfolioStore()
 
 const skills = computed(() => portfolioStore.skills)
 const profile = computed(() => portfolioStore.profile)
+const loading = computed(() => portfolioStore.loading)
+const error = computed(() => portfolioStore.error)
 
 const initials = (name = '') =>
   name
@@ -206,9 +209,9 @@ const approachCardClass = (color) => ({
 
 const approachGlowClass = (color) => ({ green: 'bg-green-500', blue: 'bg-blue-500', purple: 'bg-purple-500' }[color] || 'bg-gray-500')
 const approachDotClass = (color) => ({
-  green: 'bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.6)]',
-  blue: 'bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.6)]',
-  purple: 'bg-purple-500 shadow-[0_0_8px_rgba(168,85,247,0.6)]',
+  green: 'bg-green-500 shadow-[0_0_8px_rgba(161,193,129,0.6)]',
+  blue: 'bg-blue-500 shadow-[0_0_8px_rgba(13,59,102,0.6)]',
+  purple: 'bg-purple-500 shadow-[0_0_8px_rgba(161,193,129,0.6)]',
 }[color] || 'bg-gray-500')
 
 const categoryGlowOuter = (theme) => ({
@@ -233,29 +236,27 @@ const categoryIcon = (cat) => {
 const categoryIconClass = (theme) => ({ blue: 'text-blue-400', green: 'text-green-400', purple: 'text-purple-400' }[theme] || 'text-gray-400')
 const categoryTextClass = (theme) => ({ blue: 'text-blue-400', green: 'text-green-400', purple: 'text-purple-400' }[theme] || 'text-gray-400')
 const categoryBarClass = (theme) => ({
-  blue: 'bg-gradient-to-r from-blue-600 to-cyan-400 shadow-[0_0_10px_rgba(56,189,248,0.5)]',
-  green: 'bg-gradient-to-r from-green-600 to-emerald-400 shadow-[0_0_10px_rgba(52,211,153,0.5)]',
-  purple: 'bg-gradient-to-r from-purple-600 to-pink-400 shadow-[0_0_10px_rgba(232,121,249,0.5)]',
+  blue: 'bg-gradient-to-r from-blue-600 to-cyan-400 shadow-[0_0_10px_rgba(13,59,102,0.5)]',
+  green: 'bg-gradient-to-r from-green-600 to-emerald-400 shadow-[0_0_10px_rgba(161,193,129,0.5)]',
+  purple: 'bg-gradient-to-r from-purple-600 to-pink-400 shadow-[0_0_10px_rgba(250,240,202,0.5)]',
 }[theme] || 'bg-gradient-to-r from-gray-500 to-gray-400')
 </script>
 
 <style scoped>
-.skill-card {
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeInUp 0.6s ease-out forwards;
+/* Progress bars fill only once their card is revealed */
+.bar-fill {
+  width: 0;
+  transition: width 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.25s;
 }
 
-.category-card {
-  opacity: 0;
-  transform: translateY(20px) scale(0.95);
-  animation: fadeInUp 0.8s ease-out forwards;
+.is-visible .bar-fill {
+  width: var(--bar-w, 0%);
 }
 
-@keyframes fadeInUp {
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
+@media (prefers-reduced-motion: reduce) {
+  .bar-fill {
+    width: var(--bar-w, 0%);
+    transition: none;
   }
 }
 </style>

@@ -2,7 +2,7 @@
   <section id="projects" class="py-6 sm:py-16 px-4 text-white dark:text-gray-100">
     <div class="max-w-7xl mx-auto">
       <transition appear name="fade">
-        <h2 class="text-3xl sm:text-4xl font-bold text-center mb-12 sm:mb-16 gradient-text text-white dark:text-gray-100">
+        <h2 v-reveal class="text-3xl sm:text-4xl font-bold text-center mb-12 sm:mb-16 gradient-text text-white dark:text-gray-100">
           My Projects 
         </h2>
       </transition>
@@ -47,21 +47,35 @@
         <div
           v-for="(project, index) in filteredProjects"
           :key="project.id"
+          v-reveal="index * 80"
           class="project-card group relative overflow-hidden"
-          :style="{ transitionDelay: `${index * 100}ms` }"
         >
+          <!-- Soft background glow + orbit circle (hover only) -->
+          <div class="project-glow"></div>
+          <div class="project-orbit"></div>
+
           <!-- Project Image Container -->
           <div class="relative overflow-hidden h-40 sm:h-48">
             <img 
+              v-if="project.image"
               :src="project.image" 
               :alt="project.title"
-              class="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:rotate-2"
+              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
               loading="lazy"
             >
+            <div
+              v-else
+              class="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary-800 via-primary-700 to-secondary-700
+                     transition-transform duration-700 group-hover:scale-[1.03]"
+            >
+              <span class="text-4xl font-bold text-cream-100/70 tracking-widest">
+                {{ project.title?.slice(0, 2).toUpperCase() }}
+              </span>
+            </div>
             
-            <!-- Gradient Overlay -->
-            <div class="absolute inset-0 bg-gradient-to-t from-gray-900 dark:from-black via-gray-900/80 dark:via-black/80 to-transparent 
-                         opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+            <!-- Very light overlay so the image stays visible -->
+            <div class="absolute inset-0 bg-gradient-to-t from-primary-950/40 via-transparent to-transparent 
+                         opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             
             <!-- Quick Actions Overlay -->
             <div class="absolute inset-0 flex items-center justify-center opacity-0 
@@ -103,15 +117,14 @@
           <div class="p-4 sm:p-6 relative">
             <!-- Title with Hover Effect -->
             <h3 class="text-lg sm:text-xl font-semibold text-white dark:text-gray-100 mb-2 
-                       transition-all duration-300 group-hover:text-primary-300 
-                       transform group-hover:translate-x-1">
+                       transition-colors duration-300 group-hover:text-secondary-300">
               {{ project.title }}
             </h3>
             
-            <!-- Description with Expand on Hover -->
-            <p class="text-gray-400 dark:text-gray-500 mb-4 text-sm sm:text-base line-clamp-2 
-                       group-hover:line-clamp-none transition-all duration-300 
-                       group-hover:text-gray-300 dark:group-hover:text-gray-400 max-h-12 sm:max-h-none overflow-hidden">
+            <!-- Description (stable height, no reflow on hover) -->
+            <p class="text-gray-400 dark:text-gray-500 mb-4 text-sm sm:text-base line-clamp-2
+                       transition-colors duration-300
+                       group-hover:text-gray-300 dark:group-hover:text-gray-400">
               {{ project.description }}
             </p>
             

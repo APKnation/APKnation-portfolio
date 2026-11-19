@@ -1,7 +1,7 @@
 <template>
   <section id="contact" class="py-6 sm:py-16 text-white dark:text-gray-100">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12">
+      <div v-reveal class="text-center mb-12">
         <h2 class="text-4xl font-extrabold text-white dark:text-gray-100 sm:text-5xl leading-tight mb-4">
           <span class="gradient-text">Get In Touch</span>
         </h2>
@@ -11,7 +11,7 @@
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-        <div class="bg-gray-800 dark:bg-gray-900 p-8 rounded-lg shadow-xl border border-primary-700/50">
+        <div v-reveal.left class="bg-gray-800 dark:bg-gray-900 p-8 rounded-lg shadow-xl border border-primary-700/50">
           <h3 class="text-3xl font-bold text-white dark:text-gray-100 mb-8">Send Message</h3>
 
           <form @submit.prevent="submitForm" class="space-y-6">
@@ -56,7 +56,7 @@
           </form>
         </div>
 
-        <div class="bg-gray-800 dark:bg-gray-900 p-8 rounded-lg shadow-xl border border-primary-700/50">
+        <div v-reveal.right="120" class="bg-gray-800 dark:bg-gray-900 p-8 rounded-lg shadow-xl border border-primary-700/50">
           <h3 class="text-3xl font-bold text-white dark:text-gray-100 mb-8">Communication Channels</h3>
           <p class="text-gray-300 mb-8 leading-relaxed">
             I believe in clear and prompt communication. Below are the various ways you can reach me

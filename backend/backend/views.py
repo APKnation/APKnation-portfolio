@@ -5,9 +5,22 @@ from django.views.decorators.http import require_GET
 from portfolio.models import Education, Experience, Profile, Project, Skill
 
 
-def _project(p):
+def _project_image_url(request, p):
+    if not p.image:
+        return ''
+    try:
+        name = p.image.name
+        if p.image.storage.exists(name):
+            return request.build_absolute_uri(p.image.url)
+        return name
+    except Exception:
+        return str(p.image)
+
+
+def _project(request, p):
     return {
-        'id': p.id, 'title': p.title, 'description': p.description, 'image': p.image,
+        'id': p.id, 'title': p.title, 'description': p.description,
+        'image': _project_image_url(request, p),
         'technologies': p.technologies or [], 'category': p.category,
         'demoUrl': p.demo_url, 'githubUrl': p.github_url, 'featured': p.featured,
     }
@@ -15,7 +28,7 @@ def _project(p):
 
 @require_GET
 def project_list(request):
-    return JsonResponse([_project(p) for p in Project.objects.all()], safe=False)
+    return JsonResponse([_project(request, p) for p in Project.objects.all()], safe=False)
 
 
 @require_GET
@@ -24,7 +37,7 @@ def project_detail(request, project_id):
         p = Project.objects.get(pk=project_id)
     except Project.DoesNotExist:
         return JsonResponse({'error': 'Project not found'}, status=404)
-    return JsonResponse(_project(p))
+    return JsonResponse(_project(request, p))
 
 
 @require_GET
