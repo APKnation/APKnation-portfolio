@@ -23,28 +23,74 @@
           <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-6">
             <div
               v-for="(skill, index) in skills"
-              :key="skill.name"
+              :key="skill.id || skill.name"
               class="skill-card group relative p-px rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-500"
+              :class="skill.topics?.length ? 'col-span-2' : ''"
               :style="{ transitionDelay: `${index * 30}ms` }"
             >
               <div class="absolute inset-0 bg-gradient-to-br from-gray-700/50 via-gray-800/50 to-gray-700/50
                           group-hover:from-primary-500 group-hover:via-secondary-500 group-hover:to-primary-500 transition-colors duration-500"></div>
-              <div class="relative h-full bg-gray-900/90 backdrop-blur-xl rounded-[15px] p-5 flex flex-col items-center justify-center
-                          group-hover:bg-gray-800/90 transition-colors duration-500">
-                <div class="w-14 h-14 lg:w-16 lg:h-16 mx-auto mb-3 flex items-center justify-center rounded-xl bg-gray-800/80
-                            border border-gray-700/50 group-hover:border-primary-500/50 group-hover:bg-gray-700/80 transition-all duration-300">
-                  <span class="text-3xl lg:text-4xl group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300 filter drop-shadow-md">
-                    <img :src="skill.image || '/static/default-skill.png'" alt="{{ skill.name }}" class="w-full h-full object-contain" v-if="skill.image" />
-                    <span v-else class="text-gray-400 text-xs">No image</span>
-                  </span>
+              <div
+                class="relative h-full bg-gray-900/90 backdrop-blur-xl rounded-[15px] p-5
+                       group-hover:bg-gray-800/90 transition-colors duration-500"
+                :class="skill.topics?.length ? 'flex flex-col' : 'flex flex-col items-center justify-center text-center'"
+              >
+                <!-- Skill header -->
+                <div :class="skill.topics?.length ? 'flex items-center gap-3' : 'flex flex-col items-center'">
+                  <div
+                    class="shrink-0 flex items-center justify-center rounded-xl bg-gray-800/80
+                           border border-gray-700/50 group-hover:border-primary-500/50 group-hover:bg-gray-700/80 transition-all duration-300"
+                    :class="skill.topics?.length ? 'w-14 h-14' : 'w-14 h-14 lg:w-16 lg:h-16 mb-3'"
+                  >
+                    <img v-if="skill.image" :src="skill.image" :alt="skill.name"
+                         class="w-full h-full object-contain p-1.5 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300 drop-shadow-md" />
+                    <span v-else class="text-2xl font-bold text-gray-400 group-hover:scale-110 transition-transform duration-300">
+                      {{ initials(skill.name) }}
+                    </span>
+                  </div>
+                  <div :class="skill.topics?.length ? 'min-w-0' : 'w-full'">
+                    <h4 class="font-semibold text-gray-300 text-sm sm:text-base tracking-wide
+                               group-hover:text-white transition-colors duration-300">
+                      {{ skill.name }}
+                    </h4>
+                    <p v-if="skill.summary" class="mt-1 text-[11px] leading-snug text-gray-500 line-clamp-2">
+                      {{ skill.summary }}
+                    </p>
+                  </div>
                 </div>
-                <h4 class="font-semibold text-gray-300 text-sm sm:text-base text-center tracking-wide
-                           group-hover:text-white transition-colors duration-300">
-                  {{ skill.name }}
-                </h4>
+
+                <!-- Overall level -->
+                <div v-if="skill.level" class="mt-4">
+                  <div class="flex justify-between text-[11px] mb-1">
+                    <span class="text-gray-400">Overall</span>
+                    <span class="text-gray-400">{{ skill.level }}%</span>
+                  </div>
+                  <div class="w-full bg-gray-800 rounded-full h-1.5 overflow-hidden">
+                    <div :class="skillBarClass(skill.color)" class="h-1.5 rounded-full" :style="{ width: `${skill.level}%` }"></div>
+                  </div>
+                </div>
+
+                <!-- Visible sub-skills (topics) -->
+                <div v-if="skill.topics?.length" class="mt-4 pt-4 border-t border-gray-700/50">
+                  <p class="text-[10px] uppercase tracking-wider text-gray-500 mb-3">What I know</p>
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-3">
+                    <div v-for="topic in skill.topics" :key="topic.id || topic.name">
+                      <div class="flex justify-between text-xs mb-1">
+                        <span class="text-gray-200 font-medium truncate">{{ topic.name }}</span>
+                        <span v-if="topic.percent" class="text-gray-500 ml-2">{{ topic.percent }}%</span>
+                      </div>
+                      <div v-if="topic.percent" class="w-full bg-gray-800 rounded-full h-1 overflow-hidden">
+                        <div :class="skillBarClass(skill.color)" class="h-1 rounded-full" :style="{ width: `${topic.percent}%` }"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
+          <p v-if="!skills.length" class="text-center text-gray-500 text-sm">
+            No skills yet. Add them from the Django admin.
+          </p>
         </div>
 
         <!-- Development Methodologies (backend-managed) -->
@@ -129,6 +175,26 @@ const portfolioStore = usePortfolioStore()
 
 const skills = computed(() => portfolioStore.skills)
 const profile = computed(() => portfolioStore.profile)
+
+const initials = (name = '') =>
+  name
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((part) => part[0].toUpperCase())
+    .join('')
+
+const skillBarClass = (color) => ({
+  blue: 'bg-gradient-to-r from-blue-600 to-cyan-400',
+  green: 'bg-gradient-to-r from-green-600 to-emerald-400',
+  purple: 'bg-gradient-to-r from-purple-600 to-pink-400',
+  red: 'bg-gradient-to-r from-red-600 to-orange-400',
+  orange: 'bg-gradient-to-r from-orange-600 to-yellow-400',
+  yellow: 'bg-gradient-to-r from-yellow-500 to-amber-300',
+  pink: 'bg-gradient-to-r from-pink-600 to-rose-400',
+  cyan: 'bg-gradient-to-r from-cyan-600 to-sky-400',
+}[color] || 'bg-gradient-to-r from-primary-600 to-secondary-400')
+
 const devApproaches = computed(() => profile.value.devApproaches || [])
 const skillCategories = computed(() => profile.value.skillCategories || [])
 

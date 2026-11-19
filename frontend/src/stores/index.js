@@ -97,7 +97,7 @@ export const usePortfolioStore = defineStore('portfolio', () => {
       query {
         profile { name title heroIntro aboutBio1 aboutBio2 aboutBio3 aboutSummary location email phone githubUrl instagramUrl whatsappUrl resumeUrl contactMessage yearsExperience projectsCount skillsCount }
         projects { id title description image technologies category demoUrl githubUrl featured }
-        skills { name color image }
+        skills { id name summary description level color image topics { id name percent } }
         experience { id position company location duration description technologies achievements }
         education { id degree school location duration status description coursework }
         contact { name email phone location message }

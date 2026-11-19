@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.utils.html import format_html
-from .models import Education, Experience, Profile, Project, Skill
+from .models import Education, Experience, Profile, Project, Skill, SkillTopic
 
 
 @admin.register(Profile)
@@ -22,18 +22,59 @@ class ProjectAdmin(admin.ModelAdmin):
     ordering = ('sort_order', 'id')
 
 
+class SkillTopicInline(admin.TabularInline):
+    """Lets you add sub-topics (URLs, Views, Models, REST...) while editing a skill."""
+    model = SkillTopic
+    extra = 1
+    fields = ('name', 'percent', 'sort_order')
+    ordering = ('sort_order', 'id')
+
+
 @admin.register(Skill)
 class SkillAdmin(admin.ModelAdmin):
-    list_display = ('name', 'color', 'image_tag', 'sort_order')
+    list_display = ('name', 'level', 'image_tag', 'topics_count', 'sort_order')
+    list_editable = ('level', 'sort_order')
+    search_fields = ('name', 'summary', 'description')
     ordering = ('sort_order', 'id')
     readonly_fields = ('image_tag',)
+    inlines = [SkillTopicInline]
+    fieldsets = (
+        (None, {
+            'fields': ('name', 'color', 'level', 'sort_order'),
+            'description': 'Main skill card. Example: Django.',
+        }),
+        ('Description', {
+            'fields': ('summary', 'description'),
+        }),
+        ('Image', {
+            'fields': ('image', 'image_tag'),
+            'description': 'Upload a logo/icon for this skill (PNG, JPG or WebP).',
+        }),
+    )
 
     def image_tag(self, obj):
         if obj.image:
-            return format_html('<img src="{}" width="50" height="50" style="object-fit:cover;" />'.format(obj.image.url))
+            return format_html(
+                '<img src="{}" width="80" height="80" '
+                'style="object-fit:contain;background:#111;border-radius:8px;padding:4px;" />',
+                obj.image.url,
+            )
         return '-'
 
-    image_tag.short_description = 'Image'
+    image_tag.short_description = 'Preview'
+
+    def topics_count(self, obj):
+        return obj.topics.count()
+
+    topics_count.short_description = 'Topics'
+
+
+@admin.register(SkillTopic)
+class SkillTopicAdmin(admin.ModelAdmin):
+    list_display = ('name', 'skill', 'percent', 'sort_order')
+    list_filter = ('skill',)
+    search_fields = ('name', 'skill__name')
+    ordering = ('skill', 'sort_order', 'id')
 
 
 @admin.register(Experience)

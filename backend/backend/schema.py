@@ -34,10 +34,36 @@ class ProjectType(ObjectType):
         return getattr(self, 'github_url', None) or getattr(self, 'githubUrl', '#')
 
 
-class SkillType(ObjectType):
+class SkillTopicType(ObjectType):
+    id = Int()
     name = String()
+    percent = Int()
+
+
+class SkillType(ObjectType):
+    id = Int()
+    name = String()
+    summary = String()
+    description = String()
+    level = Int()
     color = String()
     image = String()
+    topics = List(SkillTopicType)
+
+    def resolve_image(self, info):
+        """Return a full URL so the Vue frontend can load uploads directly."""
+        if not self.image:
+            return ''
+        try:
+            return info.context.build_absolute_uri(self.image.url)
+        except Exception:
+            return ''
+
+    def resolve_topics(self, info):
+        try:
+            return self.topics.all()
+        except Exception:
+            return []
 
 
 class ExperienceType(ObjectType):

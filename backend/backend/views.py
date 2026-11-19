@@ -29,7 +29,19 @@ def project_detail(request, project_id):
 
 @require_GET
 def skill_list(request):
-    data = [{'name': s.name, 'icon': s.icon, 'color': s.color, 'level': s.level} for s in Skill.objects.all()]
+    data = [{
+        'id': s.id,
+        'name': s.name,
+        'summary': s.summary,
+        'description': s.description,
+        'level': s.level,
+        'color': s.color,
+        'image': request.build_absolute_uri(s.image.url) if s.image else '',
+        'topics': [
+            {'id': t.id, 'name': t.name, 'percent': t.percent}
+            for t in s.topics.all()
+        ],
+    } for s in Skill.objects.prefetch_related('topics')]
     return JsonResponse(data, safe=False)
 
 

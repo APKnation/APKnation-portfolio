@@ -58,8 +58,28 @@ class Project(models.Model):
 
 class Skill(models.Model):
     name = models.CharField(max_length=100)
+    summary = models.CharField(
+        max_length=300,
+        blank=True,
+        default='',
+        help_text='Short text shown on the skill card / when the skill is opened.',
+    )
+    description = models.TextField(
+        blank=True,
+        default='',
+        help_text='Longer explanation of what you know in this skill.',
+    )
+    level = models.PositiveSmallIntegerField(
+        default=0,
+        help_text='Overall proficiency from 0 to 100 (0 = hide the bar).',
+    )
     color = models.CharField(max_length=30, blank=True, default='blue')
-    image = models.ImageField(upload_to='skills/', blank=True, null=True)
+    image = models.ImageField(
+        upload_to='skills/',
+        blank=True,
+        null=True,
+        help_text='Logo/icon for this skill. Upload a PNG, JPG or WebP image.',
+    )
     sort_order = models.IntegerField(default=0)
 
     class Meta:
@@ -67,6 +87,25 @@ class Skill(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class SkillTopic(models.Model):
+    """A sub-topic inside a skill, e.g. Django > URLs, Views, Models, REST."""
+    skill = models.ForeignKey(Skill, related_name='topics', on_delete=models.CASCADE)
+    name = models.CharField(max_length=120, help_text='e.g. URLs, Views, Models, Functions, Database, REST API')
+    percent = models.PositiveSmallIntegerField(
+        default=0,
+        help_text='How well you know this topic, from 0 to 100 (0 = hide the bar).',
+    )
+    sort_order = models.IntegerField(default=0)
+
+    class Meta:
+        ordering = ['sort_order', 'id']
+        verbose_name = 'skill topic'
+        verbose_name_plural = 'skill topics'
+
+    def __str__(self):
+        return f'{self.skill.name} - {self.name}'
 
 
 class Experience(models.Model):

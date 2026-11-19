@@ -3,3 +3,6 @@
 .env
 backend/.env
 frontend/.env
+
+# Django uploaded media
+backend/backend/media/
